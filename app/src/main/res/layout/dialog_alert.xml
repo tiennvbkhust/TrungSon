@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:minWidth="300dp"
+    android:orientation="vertical"
+    android:padding="@dimen/dp20"
+    tools:ignore="MissingPrefix">
+
+    <ImageView
+        android:id="@+id/btn_dialog_show_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:tint="@color/gray"
+      />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        >
+        <TextView
+            android:id="@+id/title_dialog_one_button"
+            android:layout_width="@dimen/dp25"
+            android:layout_height="@dimen/dp25"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="3/3"
+            android:textColor="@color/white" />
+
+    </FrameLayout>
+
+
+
+    <TextView
+        fontPath="fonts/Muli-Bold.ttf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp5"
+        android:background="@drawable/bg_title_dialog"
+        android:gravity="center"
+        android:text="Oops!"
+        android:textColor="@color/red"
+        android:textSize="@dimen/dps18"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/content_dialog_one_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="3"
+        android:text="Too many ourstanding job"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/dps15" />
+
+
+</LinearLayout>

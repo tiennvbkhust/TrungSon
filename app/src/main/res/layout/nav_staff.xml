@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.NavigationView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_view"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:fitsSystemWindows="true"
+    >
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:src="@drawable/avt_default"
+                app:civ_border_color="@color/gray"
+                app:civ_border_width="1px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp32"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="TRUNG QUÂN\nNhân Viên"
+                android:textColor="#332f20"
+                android:textSize="13sp" />
+
+
+            <LinearLayout style="@style/nav_layout_root_item">
+
+                <View style="@style/nav_view_selection_item" />
+
+                <TextView
+                    style="@style/nav_textview_item"
+                    android:text="Danh sách tư vấn" />
+
+                <FrameLayout
+                    style="@style/nav_layout_badget_item"
+                    android:visibility="visible">
+
+                    <TextView
+                        style="@style/nav_text_badget_item"
+                        android:text="03" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/nav_layout_root_item">
+
+                <View
+                    style="@style/nav_view_selection_item"
+                    android:visibility="visible" />
+
+                <TextView
+                    style="@style/nav_textview_item"
+                    android:drawableLeft="@drawable/ic_placeholder"
+                    android:text="Check IN" />
+
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/nav_layout_root_item">
+
+                <View style="@style/nav_view_selection_item" />
+
+                <TextView
+                    style="@style/nav_textview_item"
+                    android:drawableLeft="@drawable/ic_bell"
+                    android:text="Thông báo" />
+
+                <FrameLayout
+                    style="@style/nav_layout_badget_item"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp16"
+                    android:visibility="visible">
+
+                    <TextView
+                        style="@style/nav_text_badget_item"
+                        android:layout_gravity="center"
+                        android:background="@drawable/nav_bg_round"
+                        android:text="03"
+                        android:textColor="@color/black" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/nav_layout_root_item">
+
+                <View style="@style/nav_view_selection_item" />
+
+                <TextView
+                    style="@style/nav_textview_item"
+                    android:drawableLeft="@drawable/ic_news"
+                    android:text="Tin tức" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_margin="@dimen/dp16"
+
+                    android:background="@color/gray" />
+
+                <LinearLayout style="@style/nav_layout_root_item">
+
+                    <View style="@style/nav_view_selection_item" />
+
+                    <TextView
+                        style="@style/nav_textview_item.extra"
+                        android:text="Sơ đồ tổ chức" />
+
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/nav_layout_root_item">
+
+                    <View style="@style/nav_view_selection_item" />
+
+                    <TextView
+                        style="@style/nav_textview_item.extra"
+                        android:text="Mô tả công việc" />
+
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/nav_layout_root_item">
+
+                    <View style="@style/nav_view_selection_item" />
+
+                    <TextView
+                        style="@style/nav_textview_item.extra"
+                        android:text="Phân nhiệm phòng ban" />
+
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/nav_layout_root_item">
+
+                    <View style="@style/nav_view_selection_item" />
+
+                    <TextView
+                        style="@style/nav_textview_item.extra"
+                        android:text="Nội quy công ty" />
+
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/nav_layout_root_item">
+
+                    <View style="@style/nav_view_selection_item" />
+
+                    <TextView
+                        style="@style/nav_textview_item.extra"
+                        android:text="Quy chế lương" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/nav_layout_root_item">
+
+                    <View style="@style/nav_view_selection_item" />
+
+                    <TextView
+                        style="@style/nav_textview_item.extra"
+                        android:text="Quy tắc ứng xử" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/nav_layout_root_item">
+
+                    <View style="@style/nav_view_selection_item" />
+
+                    <TextView
+                        style="@style/nav_textview_item.extra"
+                        android:text="Văn hóa doanh nghiệp" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/nav_layout_root_item">
+
+                    <View style="@style/nav_view_selection_item" />
+
+                    <TextView
+                        style="@style/nav_textview_item.extra"
+                        android:text="Tài liệu đào tạo" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    style="@style/nav_layout_root_item"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp50">
+
+                    <View style="@style/nav_view_selection_item" />
+
+                    <TextView
+                        style="@style/nav_textview_item.extra"
+                        android:drawableLeft="@drawable/ic_setting"
+                        android:text="Thiết lập"
+                        android:textAllCaps="false" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.NavigationView>

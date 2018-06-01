@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="39px" height="49px" viewBox="0 0 39 49" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape Copy 6</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="55.0359624%" y1="131.196037%" x2="55.0359607%" y2="-71.5759034%" id="linearGradient-1">
+            <stop stop-color="#F15A29" offset="0%"></stop>
+            <stop stop-color="#EA88C2" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Near-By" transform="translate(-318.000000, -824.000000)" fill="url(#linearGradient-1)">
+            <path d="M337.265695,824 C326.645043,824 318,832.850029 318,843.720718 C318,855.147224 335.353137,871.267687 336.092239,871.94901 C336.426762,872.255605 336.848855,872.4098 337.265695,872.4098 C337.682535,872.4098 338.104629,872.255605 338.439151,871.94901 C339.178253,871.267687 356.53139,855.147224 356.53139,843.720718 C356.53139,832.850029 347.886347,824 337.265695,824 Z M337.265695,836.10245 C341.248275,836.10245 344.490331,839.360627 344.490331,843.364827 C344.490331,847.369028 341.248275,850.62539 337.265695,850.62539 C333.283115,850.62539 330.041059,847.369028 330.041059,843.364827 C330.041059,839.360627 333.283115,836.10245 337.265695,836.10245 Z" id="Shape-Copy-6"></path>
+        </g>
+    </g>
+</svg>

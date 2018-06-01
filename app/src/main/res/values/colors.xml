@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#eeeeee</color>
+    <color name="colorPrimaryDark">#eeeeee</color>
+    <color name="colorAccent">#ea88c2</color>
+    <color name="colorRed">#ef3a42</color>
+    <color name="colorRedLight">#f37b81</color>
+    <color name="colorGrayLight">#b2b2b2</color>
+    <color name="colorGrayBlue">#6d6d6f</color>
+
+    <color name="background">#e4e4e4</color>
+    <color name="colorBlueLight">#507cc0</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorGreenLight">#dff3e2</color>
+    <color name="colorGreen">#48d360</color>
+
+    <color name="white">#ffffff</color>
+    <color name="colorText">#3b5a3a</color>
+    <color name="colorTextDark">#111111</color>
+    <color name="colorTextHint">#999999</color>
+    <color name="colorTran90">#80000000</color>
+    <color name="colorTran">#80b1b0b0</color>
+    <color name="colorView">#dcdcdc</color>
+    <color name="black">#000000</color>
+
+    <color name="colorA">#db3066</color>
+    <color name="colorB">#F7F7F7</color>
+    <color name="colorC">#CCCCCC</color>
+    <color name="colorD">#d6d6d6</color>
+    <color name="colorE">#06a9d7</color>
+    <color name="colorF">#B9B9B9</color>
+    <color name="colorG">#005abd</color>
+    <color name="alphabet_text_color">#3F51B5</color>
+    <color name="alphabet_text_selected_color">#3F51B5</color>
+    <color name="alphabet_background_color">#3F51B5</color>
+    <color name="alphabet_background_border_color">#3F51B5</color>
+    <color name="colorWhite">#fff</color>
+    <color name="red">#c06850</color>
+    <color name="red_organce">#ff5b1a</color>
+    <color name="colorGray">#fff</color>
+    <color name="pink">#cd6e61</color>
+    <color name="pink_alpha">#f2d1cb</color>
+    <color name="green">#395838</color>
+    <color name="orage">#ff9f1a</color>
+    <color name="blue">#507cc0</color>
+    <color name="gray">#999999</color>
+    <color name="bgJob">#eeeeee</color>
+    <color name="bgDetail">#ffffff</color>
+    <color name="dusk">#4d5674</color>
+    <color name="colorBG">#f9f9f9</color>
+    <color name="dark">#24253d</color>
+    <color name="coral">#fd5739</color>
+    <color name="background_color">#f5f6f7</color>
+</resources>

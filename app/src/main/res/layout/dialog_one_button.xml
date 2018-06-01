@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+
+    android:minWidth="300dp"
+    android:padding="@dimen/dp20"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title_dialog_one_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_title_dialog"
+        android:gravity="left"
+        android:textColor="@color/red"
+        android:text="notif"
+        android:textStyle="bold"
+        android:textSize="@dimen/dps18" />
+
+    <TextView
+        android:id="@+id/content_dialog_one_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="start"
+        android:maxLines="3"
+        android:paddingBottom="@dimen/dp20"
+        android:text="asdasdas asda sdas asdas dsad "
+        android:paddingRight="@dimen/dp20"
+        android:paddingTop="@dimen/dp10"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/dps15" />
+
+
+
+    <TextView
+        android:id="@+id/btn_dialog_show_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="right"
+        android:background="@drawable/bg_rounder_button_red"
+        android:paddingBottom="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp5"
+        android:paddingTop="@dimen/dp10"
+        android:paddingLeft="@dimen/dp40"
+        android:paddingRight="@dimen/dp40"
+        android:text="@string/ok"
+        android:foreground="?selectableItemBackground"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dps15" />
+</LinearLayout>

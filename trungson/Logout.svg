@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="38px" height="38px" viewBox="0 0 38 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Logout</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Profile" transform="translate(-74.000000, -1100.000000)" fill="#53555B">
+            <g id="Content" transform="translate(0.000000, 130.000000)">
+                <path d="M74,970 L74,1008 L99.9090909,1008 L99.9090909,997.636364 L96.4545455,997.636364 L96.4545455,1004.54545 L77.4545455,1004.54545 L77.4545455,973.454545 L96.4545455,973.454545 L96.4545455,980.363636 L99.9090909,980.363636 L99.9090909,970 L74,970 L74,970 Z M101.007704,982.893169 L103.450437,980.450437 L112,989 L103.450437,997.549563 L101.007704,995.106831 L105.385383,990.729152 L86.091771,990.729152 L86.091771,987.277305 L105.39184,987.277305 L101.007704,982.893169 L101.007704,982.893169 Z" id="Logout"></path>
+            </g>
+        </g>
+    </g>
+</svg>

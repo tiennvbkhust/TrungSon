@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="136px" height="136px" viewBox="0 0 136 136" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Check-In Button</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-5.5%" y="-3.9%" width="110.9%" height="110.9%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="checkin" transform="translate(-307.000000, -886.000000)">
+            <g id="Timeline-Content" transform="translate(0.000000, 564.000000)">
+                <g id="Check-In-Button" filter="url(#filter-1)" transform="translate(311.000000, 324.000000)">
+                    <circle id="Oval-2-Copy-3" fill="#FFA71C" cx="64" cy="64" r="64"></circle>
+                    <path d="M65.8352556,91.3511563 C65.831708,91.354758 65.8281332,91.3583328 65.8245315,91.3618804 C65.43105,91.7494391 64.7978918,91.7446377 64.410333,91.3511562 L64.4103459,91.3511435 C51.4116358,78.1537827 44.9122807,67.1653898 44.9122807,58.3859649 C44.9122807,44.9783854 53.9608415,38.1754386 65.122807,38.1754386 C76.2847725,38.1754386 85.3333333,44.9783854 85.3333333,58.3859649 C85.3333333,67.1653927 78.8339741,78.1537898 65.8352556,91.3511563 Z M65.122807,67.3684211 C70.0836806,67.3684211 74.1052632,63.3468385 74.1052632,58.3859649 C74.1052632,53.4250914 70.0836806,49.4035088 65.122807,49.4035088 C60.1619335,49.4035088 56.1403509,53.4250914 56.1403509,58.3859649 C56.1403509,63.3468385 60.1619335,67.3684211 65.122807,67.3684211 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

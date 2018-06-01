@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_editext"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="36dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        style="@style/fontBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="4sp"
+        android:textColor="@color/dusk"
+        android:textSize="26sp"
+        android:text="Chúc mừng bạn" />
+
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="8sp"
+        android:textColor="#4a4a4a"
+        android:textSize="16sp"
+        android:layout_marginBottom="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp18"
+        android:text="@string/msg_success_format" />
+</LinearLayout>
