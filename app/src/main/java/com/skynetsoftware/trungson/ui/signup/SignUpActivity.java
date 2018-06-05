@@ -15,13 +15,14 @@ import android.widget.TextView;
 import com.skynetsoftware.trungson.R;
 import com.skynetsoftware.trungson.ui.base.BaseActivity;
 import com.skynetsoftware.trungson.ui.verifyaccount.VerifyAccountActivity;
+import com.skynetsoftware.trungson.ui.views.ProgressDialogCustom;
 import com.skynetsoftware.trungson.utils.AppConstant;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SignUpActivity extends BaseActivity {
+public class SignUpActivity extends BaseActivity implements SignUpContract.View{
     @BindView(R.id.edtName)
     EditText edtName;
     @BindView(R.id.edtEmail)
@@ -32,6 +33,8 @@ public class SignUpActivity extends BaseActivity {
     TextView tvLinkToPrivacy;
     @BindView(R.id.scrollview)
     ScrollView scrollview;
+    SignUpContract.Presenter presenter;
+    ProgressDialogCustom dialogLoading;
 
     @Override
     protected int initLayout() {
@@ -40,8 +43,8 @@ public class SignUpActivity extends BaseActivity {
 
     @Override
     protected void initVariables() {
-        showToast("This message is fake to test system", AppConstant.POSITIVE);
-
+        presenter = new SignUpPresenter(this);
+        dialogLoading = new ProgressDialogCustom(this);
     }
 
     @Override
@@ -66,8 +69,56 @@ public class SignUpActivity extends BaseActivity {
             case R.id.tvLinkToPrivacy:
                 break;
             case R.id.btnSubmit:
-                startActivity(new Intent(SignUpActivity.this, VerifyAccountActivity.class));
+                presenter.signUp(edtName.getText().toString(),edtEmail.getText().toString(),edtPhone.getText().toString());
+
                 break;
         }
+    }
+
+    @Override
+    public void signUpSuccess(String code) {
+        Intent i =  new Intent(SignUpActivity.this, VerifyAccountActivity.class);
+        i.putExtra("name",edtName.getText().toString());
+        i.putExtra("email",edtEmail.getText().toString());
+        i.putExtra("phone",edtPhone.getText().toString());
+        i.putExtra("code",code);
+        startActivity(i);
+    }
+
+    @Override
+    public Context getMyContext() {
+        return this;
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroyView();
+        super.onDestroy();
+    }
+
+    @Override
+    public void showProgress() {
+        dialogLoading.showDialog();
+    }
+
+    @Override
+    public void hiddenProgress() {
+        dialogLoading.hideDialog();
+    }
+
+    @Override
+    public void onErrorApi(String message) {
+        showToast(message,AppConstant.NEGATIVE);
+    }
+
+    @Override
+    public void onError(String message) {
+        showToast(message,AppConstant.NEGATIVE);
+
+    }
+
+    @Override
+    public void onErrorAuthorization() {
+
     }
 }

@@ -18,7 +18,11 @@
     <string name="unknow_error">Đã có lỗi xảy ra</string>
     <string name="dismis">Bỏ qua</string>
     <string name="notify_title">Thông báo</string>
+    <string name="gg_key">AIzaSyDRiFXfMafbsuDYPx0dywRKWDWFjuWpQeI</string>
     <string name="title_activity_maps">Map</string>
     <string name="signup_privacy"><![CDATA[Bằng cách nhấn vào "Đăng ký tài khoản" bạn đã đồng ý với <font color="#c06850">điều khoản và điều kiện</font>]]></string>
     <string name="verify_title"><![CDATA[Mã xác thực vừa được gửi đến số điện thoại <font color="#c06850">%s</font>, vui lòng nhập mã để hoàn tất đăng ký]]></string>
+    <string name="format_price">%.,2f</string>
+    <string name="product_state_format"><![CDATA[Tình trạng: <font color="#009344">%s</font>]]></string>
+    <string name="product_state_format_ots"><![CDATA[Tình trạng: <font color="#f15a29">%s</font>]]></string>
 </resources>

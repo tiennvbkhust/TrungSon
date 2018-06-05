@@ -29,8 +29,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_heart" />
-                            <entry key="sourceFile" value="D:\LanguageProgram\Android\SourceCode\TrungSon\trungson\icon4.svg" />
+                            <entry key="outputName" value="ic_tab_me" />
+                            <entry key="sourceFile" value="D:\LanguageProgram\Android\SourceCode\TrungSon\trungson\Me1.svg" />
                           </map>
                         </option>
                       </PersistentState>

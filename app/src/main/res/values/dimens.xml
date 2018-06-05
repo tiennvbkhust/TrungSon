@@ -64,7 +64,7 @@
     <dimen name="dp8">8dp</dimen>
     <dimen name="dp18">18dp</dimen>
     <dimen name="dps28">28sp</dimen>
-    <dimen name="home_size_card">157dp</dimen>
+    <dimen name="home_size_card">200dp</dimen>
     <dimen name="dp4">4dp</dimen>
     <dimen name="size_padding_edt">16dp</dimen>
     <dimen name="size_drawable_nav">24dp</dimen>

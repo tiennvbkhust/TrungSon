@@ -55,7 +55,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.google.code.gson:gson:2.8.1'
     implementation 'com.sromku:simple-fb:4.1.1'
-
+    implementation 'com.google.android.gms:play-services-auth:15.0.1'
     //    Utils
     implementation 'com.blankj:utilcode:1.5.1'
     // Pick photo
@@ -65,4 +65,6 @@ dependencies {
     implementation 'com.zhihu.android:matisse:0.4.3'
     //
     implementation 'com.google.android.gms:play-services-places:15.0.1'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
+
 }

@@ -18,7 +18,7 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 
 
-import com.skynetsoftware.trungson.MainActivity;
+import com.skynetsoftware.trungson.ui.main.MainActivity;
 import com.skynetsoftware.trungson.R;
 
 import java.io.File;

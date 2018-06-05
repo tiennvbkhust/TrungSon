@@ -13,24 +13,22 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.androidadvance.topsnackbar.TSnackbar;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.jaeger.library.StatusBarUtil;
-import com.skynetsoftware.trungson.MainActivity;
 import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.interfaces.SnackBarCallBack;
 import com.skynetsoftware.trungson.models.Profile;
 import com.skynetsoftware.trungson.network.socket.SocketClient;
 import com.skynetsoftware.trungson.network.socket.SocketConstants;
+import com.skynetsoftware.trungson.ui.splash.SplashActivity;
 import com.skynetsoftware.trungson.ui.views.AlertDialogCustom;
 import com.skynetsoftware.trungson.ui.views.DialogOneButtonUtil;
 import com.skynetsoftware.trungson.R;
@@ -184,16 +182,15 @@ public abstract class BaseActivity extends AppCompatActivity {
             dialogOneButtonUtil.setDialogOneButtonClick(new DialogOneButtonUtil.DialogOneButtonClickListener() {
                 @Override
                 public void okClick() {
-                    Intent intent = new Intent(BaseActivity.this, MainActivity.class);
+                    Intent intent = new Intent(BaseActivity.this, SplashActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                    AppController.getInstance().setmProfileUser(null);
+                    AppController.getInstance().setmProfileUser(null);
                     AppController.getInstance().getmSetting().remove(AppConstant.KEY_PROFILE);
                     AppController.getInstance().getmSetting().remove(AppConstant.KEY_TOKEN);
                     AppController.getInstance().setmProfileUser(null);
-
                     startActivity(intent);
-                    finish();
+                    finishAffinity();
                 }
             });
         }
@@ -202,6 +199,22 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void showToast(String message, int type) {
+        TSnackbar snackbar = TSnackbar.make(findViewById(initViewSBAnchor() == 0 ? android.R.id.content : initViewSBAnchor()), message, TSnackbar.LENGTH_LONG);
+        snackbar.setActionTextColor(Color.WHITE);
+        View snackbarView = snackbar.getView();
+        snackbarView.setBackgroundColor(Color.parseColor(type == AppConstant.POSITIVE ? "#395838" : "#fe3824"));
+        TextView textView = (TextView) snackbarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
+        textView.setTextColor(Color.WHITE);
+        snackbar.show();
+        snackbar.setCallback(new TSnackbar.Callback() {
+            @Override
+            public void onDismissed(TSnackbar snackbar, int event) {
+                super.onDismissed(snackbar, event);
+                if(snackBarCallBack!=null) snackBarCallBack.onClosedSnackBar();
+            }
+        });
+    }
+    public void showToast(String message, int type, final SnackBarCallBack snackBarCallBack) {
         TSnackbar snackbar = TSnackbar.make(findViewById(initViewSBAnchor() == 0 ? android.R.id.content : initViewSBAnchor()), message, TSnackbar.LENGTH_LONG);
         snackbar.setActionTextColor(Color.WHITE);
         View snackbarView = snackbar.getView();

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    >
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize">
+
+                <ImageView
+                    android:id="@+id/imgHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dp16"
+                    app:srcCompat="@drawable/ic_navbar" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_centerInParent="true"
+                    app:srcCompat="@drawable/ic_toolbar_logo" />
+
+                <RelativeLayout
+                    android:id="@+id/imgCart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp2"
+                        android:background="@drawable/nav_bg_circle"
+                        android:backgroundTint="@color/orage"
+                        android:gravity="center"
+                        android:padding="0dp"
+                        android:text="2"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dps10"
+                        android:visibility="gone" />
+
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/dp16"
+                        app:srcCompat="@drawable/ic_cart" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_margin="@dimen/dp16"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TOP NHÀ THUỐC"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/dps16" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="Xem tất cả"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.skynetsoftware.trungson.ui.views.SlideView
+                    android:id="@+id/slidePhotos"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/home_size_photo"
+                    android:visibility="visible"
+                    app:rollviewpager_play_delay="3000" />
+
+                <ProgressBar
+                    android:id="@+id/loading"
+                    style="@style/DialogProgress"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_centerInParent="true"
+                    android:visibility="visible" />
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_margin="@dimen/dp16"
+                android:background="@color/gray" />
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                app:tabGravity="fill"
+                app:tabMode="scrollable" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pagerShop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v4.view.ViewPager>
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

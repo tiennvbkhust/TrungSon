@@ -32,25 +32,25 @@ public class SlideRemoteImpl extends Interactor implements SlideContract.Interac
             presenter.notFoundInfor();
             return;
         }
-//        getmService().getProfile(profile.getId(), AppConstant.TYPE_USER).enqueue(new CallBackBase<ApiResponse<Profile>>() {
-//            @Override
-//            public void onRequestSuccess(Call<ApiResponse<Profile>> call, Response<ApiResponse<Profile>> response) {
-//                if (response.isSuccessful() && response.body() != null) {
-//                    if (response.body().getCode() == AppConstant.CODE_API_SUCCESS && response.body().getData() != null) {
-//                        presenter.getInforSuccess(response.body().getData());
-//                    } else {
-//                        presenter.notFoundInfor();
-//                    }
-//                } else {
-//                    presenter.notFoundInfor();
-//                }
-//            }
-//
-//            @Override
-//            public void onRequestFailure(Call<ApiResponse<Profile>> call, Throwable t) {
-//                presenter.notFoundInfor();
-//
-//            }
-//        });
+        getmService().getProfile(profile.getId(), AppConstant.TYPE_USER).enqueue(new CallBackBase<ApiResponse<Profile>>() {
+            @Override
+            public void onRequestSuccess(Call<ApiResponse<Profile>> call, Response<ApiResponse<Profile>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    if (response.body().getCode() == AppConstant.CODE_API_SUCCESS && response.body().getData() != null) {
+                        presenter.getInforSuccess(response.body().getData());
+                    } else {
+                        presenter.notFoundInfor();
+                    }
+                } else {
+                    presenter.notFoundInfor();
+                }
+            }
+
+            @Override
+            public void onRequestFailure(Call<ApiResponse<Profile>> call, Throwable t) {
+                presenter.notFoundInfor();
+
+            }
+        });
     }
 }

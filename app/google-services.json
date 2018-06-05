@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "855185510952",
+    "firebase_url": "https://trungsonpharma-206202.firebaseio.com",
+    "project_id": "trungsonpharma-206202",
+    "storage_bucket": "trungsonpharma-206202.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:855185510952:android:1a1e08fb32fb88e0",
+        "android_client_info": {
+          "package_name": "com.skynetsoftware.trungson"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "855185510952-32fdquug9753gdul9o96ki4kbf9kvn70.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.skynetsoftware.trungson",
+            "certificate_hash": "512dd8f0da937eaa3228f9a42c8f36647420c90b"
+          }
+        },
+        {
+          "client_id": "855185510952-l82qa3ca4k7uo3gn8n84bgujal1gpc2s.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "855185510952-l82qa3ca4k7uo3gn8n84bgujal1gpc2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3ZsxoK7uAJ4DXzm-O6vw25OsJgDyIT2E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "855185510952-l82qa3ca4k7uo3gn8n84bgujal1gpc2s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

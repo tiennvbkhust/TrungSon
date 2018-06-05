@@ -8,7 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.blankj.utilcode.util.LogUtils;
-import com.skynetsoftware.trungson.MainActivity;
+import com.skynetsoftware.trungson.ui.main.MainActivity;
 import com.skynetsoftware.trungson.R;
 import com.skynetsoftware.trungson.ui.login.LoginActivity;
 import com.skynetsoftware.trungson.ui.views.ProgressDialogCustom;
@@ -33,12 +33,10 @@ public class SplashActivity extends AppCompatActivity implements SlideContract.V
         ButterKnife.bind(this);
         dialogCustom  = new ProgressDialogCustom(this);
         presenter = new SlidePresenter(this);
-       // presenter.getInfor();
+        presenter.getInfor();
 //        getDialogProgress().hideDialog();
 //        MainApplication.getInstance().setDay(day);
-        Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-       /// startActivity(intent);
-      //  finish();
+
     }
 
     @Override
@@ -65,14 +63,14 @@ public class SplashActivity extends AppCompatActivity implements SlideContract.V
     @Override
     public void onErrorApi(String message) {
         LogUtils.e(message);
-      //  startActivity(new Intent(SplashActivity.this, AccountActivity.class));
+        startActivity(new Intent(SplashActivity.this, LoginActivity.class));
         finish();
     }
 
     @Override
     public void onError(String message) {
         LogUtils.e(message);
-      //  startActivity(new Intent(SplashActivity.this, AccountActivity.class));
+        startActivity(new Intent(SplashActivity.this, LoginActivity.class));
         finish();
     }
 
@@ -84,7 +82,7 @@ public class SplashActivity extends AppCompatActivity implements SlideContract.V
 
     @Override
     public void onErrorAuthorization() {
-      //  startActivity(new Intent(SplashActivity.this, AccountActivity.class));
+        startActivity(new Intent(SplashActivity.this, LoginActivity.class));
         finish();
     }
 

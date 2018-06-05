@@ -70,7 +70,6 @@ public abstract class BaseFragment extends Fragment {
     protected abstract void initViews(View view);
 
     protected abstract void initVariables();
-    protected abstract int initViewSBAnchor();
 
 
     public void replaceNewOtherFragment(Fragment fragment) {
@@ -86,16 +85,16 @@ public abstract class BaseFragment extends Fragment {
                 .commit();
     }
 
-    public void showToast(String message, int type) {
-        if (initViewSBAnchor() == -1) return;
-        TSnackbar snackbar = TSnackbar.make(view.findViewById(initViewSBAnchor()), message, TSnackbar.LENGTH_LONG);
-        snackbar.setActionTextColor(Color.WHITE);
-        View snackbarView = snackbar.getView();
-        snackbarView.setBackgroundColor(Color.parseColor(type == POSITIVE ? "#48d360" : "#fe3824"));
-        TextView textView = (TextView) snackbarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
-        textView.setTextColor(Color.WHITE);
-        snackbar.show();
-    }
+//    public void showToast(String message, int type) {
+//        if (initViewSBAnchor() == -1) return;
+//        TSnackbar snackbar = TSnackbar.make(view.findViewById(initViewSBAnchor()), message, TSnackbar.LENGTH_LONG);
+//        snackbar.setActionTextColor(Color.WHITE);
+//        View snackbarView = snackbar.getView();
+//        snackbarView.setBackgroundColor(Color.parseColor(type == POSITIVE ? "#48d360" : "#fe3824"));
+//        TextView textView = (TextView) snackbarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
+//        textView.setTextColor(Color.WHITE);
+//        snackbar.show();
+//    }
     public void replaceToOtherFragment(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         //fragmentManager.beginTransaction();
