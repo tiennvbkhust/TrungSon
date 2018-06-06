@@ -76,11 +76,7 @@
             android:enabled="true"
             android:process=":remote" />
 
-        <activity
-            android:name=".ui.MapsActivity"
-            android:label="@string/title_activity_maps">
 
-        </activity>
         <activity
             android:name=".ui.splash.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -102,6 +98,20 @@
         <activity
             android:name=".ui.forgotpassword.ForgotPasswordActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+
+
+        <!--Photopick and cut-->
+        <activity android:name="me.iwf.photopicker.PhotoPickerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            />
+
+        <activity android:name="me.iwf.photopicker.PhotoPagerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <!---->
     </application>
 
 </manifest>

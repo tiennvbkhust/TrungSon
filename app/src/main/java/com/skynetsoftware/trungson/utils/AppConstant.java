@@ -52,6 +52,7 @@ public class AppConstant {
     public static final String JSON = "json";
     public static final String NOTI_ON = "noti_on";
     public static final int STATE_OUT_OF_STORE = 0;
+    public static final String LATLNG = "latlng";
     public static String ID_CHAT = "id_chat";
 
     public class Value {

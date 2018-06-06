@@ -3,12 +3,14 @@ package com.skynetsoftware.trungson.ui.tabhome.listproduct;
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.skynetsoftware.trungson.R;
@@ -78,8 +80,11 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
         });
         if (product.getImg() != null && !product.getImg().isEmpty())
             Picasso.with(context).load(product.getImg()).into(holder.imgProduct);
-
-
+        if(position == 0) {
+            RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) holder.card.getLayoutParams();
+            layoutParams.topMargin= (int) context.getResources().getDimension(R.dimen.dp16);
+            holder.card.setLayoutParams(layoutParams);
+        }
 
     }
 
@@ -101,6 +106,8 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
         TextView tvStateProduct;
         @BindView(R.id.tvDescriptionProduct)
         TextView tvDescriptionProduct;
+        @BindView(R.id.card)
+        CardView card;
 
         public ProductHolder(View itemView) {
             super(itemView);

@@ -9,15 +9,22 @@ import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.DrawableRes;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 
 
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.skynetsoftware.trungson.ui.main.MainActivity;
 import com.skynetsoftware.trungson.R;
 
@@ -41,7 +48,14 @@ public class CommomUtils {
         format.setDecimalFormatSymbols(symbols);
         return String.valueOf(number);
     }
-
+    public static BitmapDescriptor bitmapDescriptorFromVector(Context context, int vectorResId) {
+        Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
+        vectorDrawable.setBounds(0, 0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight());
+        Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        vectorDrawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
+    }
     public static void openMapToLocation(Activity activity,String location){
         Uri gmmIntentUri = Uri.parse("google.navigation:q="+location+"&avoid=tf");
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);

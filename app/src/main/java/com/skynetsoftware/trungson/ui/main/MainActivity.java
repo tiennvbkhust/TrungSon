@@ -130,13 +130,20 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
     @OnClick({R.id.nav_c_home, R.id.nav_c_shop, R.id.nav_c_nearby, R.id.nav_c_cart, R.id.nav_c_notification, R.id.nav_c_history, R.id.nav_c_news, R.id.nav_c_favourite, R.id.nav_c_setting, R.id.nav_s_ondemand, R.id.nav_s_checkin, R.id.nav_s_notification, R.id.nav_s_news, R.id.nav_s_setting})
     public void onViewClicked(View view) {
         if (currentMenu != null) currentMenu.getChildAt(0).setVisibility(View.INVISIBLE);
+        HomeFragment homeFragment = (HomeFragment) getSupportFragmentManager().findFragmentByTag("home");
 
         switch (view.getId()) {
             case R.id.nav_c_home:
+                homeFragment.tranToTab(0);
+
                 break;
             case R.id.nav_c_shop:
+                homeFragment.tranToTab(1);
+
                 break;
             case R.id.nav_c_nearby:
+                homeFragment.tranToTab(2);
+
                 break;
             case R.id.nav_c_cart:
                 break;
@@ -149,6 +156,7 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
             case R.id.nav_c_favourite:
                 break;
             case R.id.nav_c_setting:
+                homeFragment.tranToTab(3);
                 break;
             case R.id.nav_s_ondemand:
                 break;
@@ -159,6 +167,7 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
             case R.id.nav_s_news:
                 break;
             case R.id.nav_s_setting:
+
                 break;
         }
         currentMenu = (LinearLayout) view;
@@ -168,13 +177,18 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
         }
     }
 
+    public void changeNavUI(int idViewChoose){
+        if (currentMenu != null) currentMenu.getChildAt(0).setVisibility(View.INVISIBLE);
+        currentMenu = (LinearLayout) findViewById(idViewChoose);
+        currentMenu.getChildAt(0).setVisibility(View.VISIBLE);
+    }
     @Override
     public void onClick(View v) {
         HomeFragment homeFragment = (HomeFragment) getSupportFragmentManager().findFragmentByTag("home");
         if (v.getId() == R.id.imgHome) {
             drawer.openDrawer(Gravity.LEFT);
         } else if (v.getId() == R.id.imgCart) {
-            homeFragment.tranToCart();
+            homeFragment.tranToTab(1);
 
         }
     }

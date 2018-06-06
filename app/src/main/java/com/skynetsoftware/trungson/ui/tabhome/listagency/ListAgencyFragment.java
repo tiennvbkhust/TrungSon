@@ -19,7 +19,9 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.gson.Gson;
 import com.skynetsoftware.trungson.R;
+import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.interfaces.ICallback;
 import com.skynetsoftware.trungson.models.Shop;
 import com.skynetsoftware.trungson.ui.base.BaseFragment;
@@ -72,6 +74,10 @@ public class ListAgencyFragment extends BaseFragment implements ListAgencyContra
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
         mFusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this);
+        myLatlng = new Gson().fromJson(AppController.getInstance().getmSetting().getString(AppConstant.LATLNG), LatLng.class);
+        if(myLatlng != null){
+            presenter.getListAgency(myLatlng);
+        }
     }
 
     @SuppressLint("MissingPermission")
@@ -135,6 +141,7 @@ public class ListAgencyFragment extends BaseFragment implements ListAgencyContra
         if (location != null) {
             myLatlng = new LatLng(location.getLatitude(), location.getLongitude());
             presenter.getListAgency(myLatlng);
+            AppController.getInstance().getmSetting().put(AppConstant.LATLNG, new Gson().toJson(myLatlng));
         }
     }
 

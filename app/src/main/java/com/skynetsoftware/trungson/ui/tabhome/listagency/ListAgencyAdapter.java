@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatRatingBar;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -63,6 +64,11 @@ public class ListAgencyAdapter extends RecyclerView.Adapter<ListAgencyAdapter.Ag
         if (product.getAvatar() != null && !product.getAvatar().isEmpty())
             Picasso.with(context).load(product.getAvatar()).into(holder.imgAgency);
         holder.rateAgency.setRating((float) product.getStar());
+        if(position == 0) {
+            RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) holder.card.getLayoutParams();
+            layoutParams.topMargin= (int) context.getResources().getDimension(R.dimen.dp16);
+            holder.card.setLayoutParams(layoutParams);
+        }
     }
 
     @Override
@@ -82,7 +88,8 @@ public class ListAgencyAdapter extends RecyclerView.Adapter<ListAgencyAdapter.Ag
         TextView tvAddressAgency;
         @BindView(R.id.rateAgency)
         AppCompatRatingBar rateAgency;
-
+        @BindView(R.id.card)
+        CardView card;
         public AgencyHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

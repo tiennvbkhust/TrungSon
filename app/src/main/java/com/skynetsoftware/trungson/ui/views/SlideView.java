@@ -206,7 +206,7 @@ public class SlideView extends RelativeLayout implements ViewPager.OnPageChangeL
         mHintView.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
         LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        lp.bottomMargin= (int) getContext().getResources().getDimension(R.dimen.dp30); //todo set margin hintview
+        lp.bottomMargin= (int) getContext().getResources().getDimension(R.dimen.dp50); //todo set margin hintview
         ((View) mHintView).setLayoutParams(lp);
 
         GradientDrawable gd = new GradientDrawable();

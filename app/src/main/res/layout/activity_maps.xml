@@ -1,21 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.MapsActivity" />
+        android:layout_height="match_parent">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/map_bg">
+        <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:map="http://schemas.android.com/apk/res-auto"-->
+        <!--xmlns:tools="http://schemas.android.com/tools"-->
+        <!--android:id="@+id/map"-->
+        <!--android:name="com.google.android.gms.maps.SupportMapFragment"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--tools:context=".ui.MapsActivity" />-->
+        <com.google.android.gms.maps.MapView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    </FrameLayout>
-</RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/map_bg">
+
+            <ImageView
+                android:id="@+id/imgHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp16"
+                android:tint="#de2029"
+                app:srcCompat="@drawable/ic_navbar" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgHome"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp8"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:layout_weight="1"
+                    android:background="@drawable/map_bg_search"
+                    android:elevation="@dimen/dp2"
+                    android:gravity="center"
+                    android:padding="@dimen/dp8"
+                    android:text="Cửa hàng thuốc gần bạn" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/btnMylocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp8"
+                    android:background="@color/white"
+                    android:elevation="@dimen/dp2"
+                    app:backgroundTint="@color/white"
+                    app:fabSize="mini"
+                    app:rippleColor="@color/colorWhite"
+                    app:srcCompat="@drawable/ic_my_location_black_24dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="@dimen/dp32"
+                android:layout_marginLeft="@dimen/dp60"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bán kính 5km" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rcvAgency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

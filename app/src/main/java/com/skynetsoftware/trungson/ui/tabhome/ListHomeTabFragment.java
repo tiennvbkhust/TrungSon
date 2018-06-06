@@ -3,11 +3,17 @@ package com.skynetsoftware.trungson.ui.tabhome;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -42,13 +48,14 @@ public class ListHomeTabFragment extends BaseFragment implements ListProductCont
     SlideView slidePhotos;
     @BindView(R.id.tabs)
     TabLayout tabs;
-    @BindView(R.id.scrollview)
-    NestedScrollView scrollview;
+
     @BindView(R.id.loading)
     ProgressBar loading;
     ListProductContract.Presenter presenter;
     @BindView(R.id.pagerShop)
     ViewPager pagerShop;
+    @BindView(R.id.layoutRoot)
+    LinearLayout layoutRoot;
 
     private SlidePhotoAdapter slidePhotoAdapter;
     private BottomTabAdapter bottomTabAdapter;
@@ -79,12 +86,34 @@ public class ListHomeTabFragment extends BaseFragment implements ListProductCont
         bottomTabAdapter = new BottomTabAdapter(getFragmentManager());
         bottomTabAdapter.addTab(ListProductFragment.newInstance());
         bottomTabAdapter.addTab(ListAgencyFragment.newInstance());
-        bottomTabAdapter.addTab(ListFoodFragment.newInstance());
+//        bottomTabAdapter.addTab(ListFoodFragment.newInstance());
         pagerShop.setAdapter(bottomTabAdapter);
         tabs.setupWithViewPager(pagerShop);
         tabs.getTabAt(0).setText("Sản phẩm mua nhiều");
         tabs.getTabAt(1).setText("Đại lý thuốc gần bạn");
-        tabs.getTabAt(2).setText("Thực phẩm chức năng");
+//        tabs.getTabAt(2).setText("Thực phẩm chức năng");
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
+//        ViewTreeObserver vto = layoutRoot.getViewTreeObserver();
+//        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//            @Override
+//            public void onGlobalLayout() {
+//                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+//                    layoutRoot.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+//                } else {
+//                    layoutRoot.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+//                }
+//                int width  = layoutRoot.getMeasuredWidth();
+//                int height = layoutRoot.getMeasuredHeight();
+//        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
+//        params.height = height;
+//        layoutRoot.setLayoutParams(params);
+//
+//            }
+//        });
     }
 
     @Override
@@ -122,6 +151,7 @@ public class ListHomeTabFragment extends BaseFragment implements ListProductCont
         slidePhotoAdapter.setUrlPhotos(listShop);
         slidePhotos.setHintView(new ColorPointHintViewCustom(getContext(), Color.parseColor("#ea88c2"), Color.WHITE));
         LogUtils.e("ssss");
+        slidePhotoAdapter.notifyDataSetChanged();
 
     }
 

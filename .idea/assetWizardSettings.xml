@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/D:/LanguageProgram/Android/Android%20studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_class_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/D:/LanguageProgram/Android/Android%20studio/plugins/android/lib/android.jar!/images/material_design_icons/maps/ic_my_location_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -29,8 +29,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_tab_me" />
-                            <entry key="sourceFile" value="D:\LanguageProgram\Android\SourceCode\TrungSon\trungson\Me1.svg" />
+                            <entry key="outputName" value="ic_sort_icon" />
+                            <entry key="sourceFile" value="D:\LanguageProgram\Android\SourceCode\TrungSon\trungson\sort icon.svg" />
                           </map>
                         </option>
                       </PersistentState>
