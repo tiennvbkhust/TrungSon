@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.skynetsoftware.trungson">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,6 +17,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
+        tools:replace="android:allowBackup"
         android:name=".application.AppController"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"

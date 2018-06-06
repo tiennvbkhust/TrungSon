@@ -42,137 +42,122 @@
                 android:text="TRUNG QUÂN"
                 android:textColor="@color/gray"
                />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="bottom"
+    android:layout_marginBottom="@dimen/dp32"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/layoutAddress"
+        style="@style/profile_layout_item">
 
-            <LinearLayout
-                android:id="@+id/layoutAddress"
-                style="@style/profile_layout_item">
+        <ImageView
+            style="@style/profile_icon_item"
+            app:srcCompat="@drawable/ic_archive1" />
 
-                <ImageView
-                    style="@style/profile_icon_item"
-                    app:srcCompat="@drawable/ic_archive1" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+            <TextView
+                style="@style/profile_text_item"
+                android:text="Địa chỉ thanh toán" />
 
-                    <TextView
-                        style="@style/profile_text_item"
-                        android:text="Địa chỉ thanh toán" />
+            <View style="@style/div_ver" />
+        </LinearLayout>
+    </LinearLayout>
 
-                    <View style="@style/div_ver" />
-                </LinearLayout>
-            </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layoutInfor"
 
-            <LinearLayout
-                android:id="@+id/layoutInfor"
+        style="@style/profile_layout_item">
 
-                style="@style/profile_layout_item">
+        <ImageView
+            style="@style/profile_icon_item"
+            app:srcCompat="@drawable/ic_archive2" />
 
-                <ImageView
-                    style="@style/profile_icon_item"
-                    app:srcCompat="@drawable/ic_archive2" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+            <TextView
+                style="@style/profile_text_item"
+                android:text="Thông tin cá nhân" />
 
-                    <TextView
-                        style="@style/profile_text_item"
-                        android:text="Thông tin cá nhân" />
+            <View style="@style/div_ver" />
+        </LinearLayout>
+    </LinearLayout>
 
-                    <View style="@style/div_ver" />
-                </LinearLayout>
-            </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layoutCart"
 
-            <LinearLayout
-                android:id="@+id/layoutCart"
+        style="@style/profile_layout_item">
 
-                style="@style/profile_layout_item">
+        <ImageView
+            style="@style/profile_icon_item"
+            app:srcCompat="@drawable/ic_archive3" />
 
-                <ImageView
-                    style="@style/profile_icon_item"
-                    app:srcCompat="@drawable/ic_archive3" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+            <TextView
+                style="@style/profile_text_item"
+                android:text="@string/payment_amp_card" />
 
-                    <TextView
-                        style="@style/profile_text_item"
-                        android:text="@string/payment_amp_card" />
+            <View style="@style/div_ver" />
+        </LinearLayout>
+    </LinearLayout>
 
-                    <View style="@style/div_ver" />
-                </LinearLayout>
-            </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layoutContact"
 
-            <!--<LinearLayout-->
-                <!--android:id="@+id/layoutGift"-->
+        style="@style/profile_layout_item">
 
-                <!--style="@style/profile_layout_item">-->
+        <ImageView
+            style="@style/profile_icon_item"
+            app:srcCompat="@drawable/ic_archive5" />
 
-                <!--<ImageView-->
-                    <!--style="@style/profile_icon_item"-->
-                    <!--app:srcCompat="@drawable/ic_archive4" />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:orientation="vertical">-->
+            <TextView
+                style="@style/profile_text_item"
+                android:text="Liên hệ với chúng tôi" />
 
-                    <!--<TextView-->
-                        <!--style="@style/profile_text_item"-->
-                        <!--android:text="Quà tặng" />-->
+            <View style="@style/div_ver" />
+        </LinearLayout>
+    </LinearLayout>
 
-                    <!--<View style="@style/div_ver" />-->
-                <!--</LinearLayout>-->
-            <!--</LinearLayout>-->
+    <LinearLayout
+        android:id="@+id/layoutLogout"
 
-            <LinearLayout
-                android:id="@+id/layoutContact"
+        style="@style/profile_layout_item">
 
-                style="@style/profile_layout_item">
+        <ImageView
+            style="@style/profile_icon_item"
+            app:srcCompat="@drawable/ic_logout" />
 
-                <ImageView
-                    style="@style/profile_icon_item"
-                    app:srcCompat="@drawable/ic_archive5" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+            <TextView
+                style="@style/profile_text_item"
+                android:text="Thoát" />
 
-                    <TextView
-                        style="@style/profile_text_item"
-                        android:text="Liên hệ với chúng tôi" />
+            <View style="@style/div_ver" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
 
-                    <View style="@style/div_ver" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layoutLogout"
-
-                style="@style/profile_layout_item">
-
-                <ImageView
-                    style="@style/profile_icon_item"
-                    app:srcCompat="@drawable/ic_logout" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/profile_text_item"
-                        android:text="Thoát" />
-
-                    <View style="@style/div_ver" />
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </android.support.design.widget.CoordinatorLayout>

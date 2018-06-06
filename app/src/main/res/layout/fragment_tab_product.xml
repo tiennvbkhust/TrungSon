@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<android.support.v4.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:fillViewport="true">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
@@ -35,32 +35,108 @@
                     android:layout_centerVertical="true"
                     android:orientation="horizontal">
 
-                    <CheckBox
+                    <ImageView
+                        android:id="@+id/toolbarCbSort"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/dp16"
-                        android:button="@drawable/selector_cb_sort"
-                        android:checked="false" />
+                        android:checked="false"
+                        android:src="@drawable/selector_cb_sort" />
 
-                    <CheckBox
+                    <ImageView
+                        android:id="@+id/toolbarCbFilter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/dp16"
-                        android:button="@drawable/selector_cb_filter"
-                        android:checked="true" />
+                        android:checked="true"
+                        android:src="@drawable/selector_cb_filter" />
                 </LinearLayout>
 
             </RelativeLayout>
-            <ImageView
+
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btn_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+
+                android:layout_margin="@dimen/dp16"
+                android:tint="@color/gray"
+                app:backgroundTint="@color/white"
+                app:fabSize="normal"
+                app:rippleColor="@color/colorView"
+                app:srcCompat="@drawable/ic_message_black_24dp" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btn_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/btn_msg"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/dp16"
+                android:tint="@color/orage"
+                app:backgroundTint="@color/white"
+                app:fabSize="normal"
+                app:rippleColor="@color/colorView"
+                app:srcCompat="@drawable/ic_star_half_black_24dp" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/home_size_card"
-                android:scaleType="centerCrop"
-                android:src="@drawable/slide_default" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/home_size_card">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/home_size_card"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/slide_default" />
+
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="@dimen/dp16"
+                        android:text="Danh muc"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    app:tabGravity="fill"
+                    app:tabMode="fixed" />
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/pagerProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="visible" />
+
+            </LinearLayout>
         </RelativeLayout>
 
-    </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
+    <View
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:visibility="gone" />
+
+    <include layout="@layout/content_bottom_filter_sheet" />
+
+    <include layout="@layout/content_bottom_sort_sheet" />
 </android.support.design.widget.CoordinatorLayout>

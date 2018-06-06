@@ -150,5 +150,14 @@
         <item name="colorPrimaryDark">#CCa500</item>
     </style>
 
+    <style name="sort_rad">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawableRight">@drawable/selector_radio_btn</item>
+        <item name="android:padding">@dimen/dp16</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
     <dimen name="actionBarSize">32dp</dimen>
 </resources>

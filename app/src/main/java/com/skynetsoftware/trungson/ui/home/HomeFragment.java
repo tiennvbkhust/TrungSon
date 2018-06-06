@@ -11,6 +11,7 @@ import com.skynetsoftware.trungson.ui.main.MainActivity;
 import com.skynetsoftware.trungson.ui.tabhome.ListHomeTabFragment;
 import com.skynetsoftware.trungson.ui.tabhome.listfood.ListFoodFragment;
 import com.skynetsoftware.trungson.ui.tabmap.MapFragment;
+import com.skynetsoftware.trungson.ui.tabproduct.ListProductsFragment;
 import com.skynetsoftware.trungson.ui.tabprofile.ProfileFragment;
 
 import butterknife.BindView;
@@ -42,7 +43,7 @@ public class HomeFragment extends BaseFragment {
     protected void initVariables() {
         bottomTabAdapter = new BottomTabAdapter(getFragmentManager());
         bottomTabAdapter.addTab(ListHomeTabFragment.newInstance());
-        bottomTabAdapter.addTab(ListFoodFragment.newInstance());
+        bottomTabAdapter.addTab(ListProductsFragment.newInstance(null));
         bottomTabAdapter.addTab(MapFragment.newInstance());
         bottomTabAdapter.addTab(ProfileFragment.newInstance());
         viewpager.setAdapter(bottomTabAdapter);
@@ -51,7 +52,7 @@ public class HomeFragment extends BaseFragment {
         bottomtab.getTabAt(1).setIcon(R.drawable.ic_tab_shop);
         bottomtab.getTabAt(2).setIcon(R.drawable.ic_tab_map);
         bottomtab.getTabAt(3).setIcon(R.drawable.ic_tab_me);
-        this.viewpager.setOffscreenPageLimit(0);
+//        this.viewpager.setOffscreenPageLimit(0);
 
         viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
