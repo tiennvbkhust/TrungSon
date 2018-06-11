@@ -1,6 +1,7 @@
 package com.skynetsoftware.trungson.ui.main;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,6 +15,7 @@ import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.models.Profile;
 import com.skynetsoftware.trungson.ui.base.BaseActivity;
 import com.skynetsoftware.trungson.ui.home.HomeFragment;
+import com.skynetsoftware.trungson.ui.tabproduct.ListProductsFragment;
 import com.skynetsoftware.trungson.ui.views.ProgressDialogCustom;
 import com.skynetsoftware.trungson.utils.AppConstant;
 import com.skynetsoftware.trungson.utils.PicassoUtils;
@@ -188,8 +190,11 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
         if (v.getId() == R.id.imgHome) {
             drawer.openDrawer(Gravity.LEFT);
         } else if (v.getId() == R.id.imgCart) {
-            homeFragment.tranToTab(1);
 
         }
+    }
+
+    public void tranToFragment(Fragment listProductsFragment) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.root, listProductsFragment, listProductsFragment.getTag()).commit();
     }
 }

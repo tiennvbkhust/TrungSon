@@ -1,9 +1,12 @@
 package com.skynetsoftware.trungson.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Product {
+public class Product implements Parcelable {
     @Expose
     @SerializedName("active")
     private int active;
@@ -52,6 +55,20 @@ public class Product {
     @Expose
     @SerializedName("id")
     private String id;
+    @Expose
+    @SerializedName("is_favourite")
+    private int is_favourite;
+    @Expose
+    @SerializedName("numberOfProduct")
+    private int numberOfProduct;
+
+    public int getNumberOfProduct() {
+        return numberOfProduct;
+    }
+
+    public void setNumberOfProduct(int numberOfProduct) {
+        this.numberOfProduct = numberOfProduct;
+    }
 
     public int getActive() {
         return active;
@@ -63,6 +80,14 @@ public class Product {
 
     public String getUser_like() {
         return user_like;
+    }
+
+    public int getIs_favourite() {
+        return is_favourite;
+    }
+
+    public void setIs_favourite(int is_favourite) {
+        this.is_favourite = is_favourite;
     }
 
     public void setUser_like(String user_like) {
@@ -180,4 +205,67 @@ public class Product {
     public void setId(String id) {
         this.id = id;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.active);
+        dest.writeString(this.user_like);
+        dest.writeString(this.date);
+        dest.writeString(this.content);
+        dest.writeString(this.effect);
+        dest.writeString(this.used);
+        dest.writeInt(this.quantity);
+        dest.writeString(this.feature);
+        dest.writeInt(this.status);
+        dest.writeDouble(this.price);
+        dest.writeString(this.img);
+        dest.writeString(this.name);
+        dest.writeString(this.brand);
+        dest.writeString(this.c_id);
+        dest.writeString(this.code);
+        dest.writeString(this.id);
+        dest.writeInt(this.is_favourite);
+        dest.writeInt(this.numberOfProduct);
+    }
+
+    public Product() {
+    }
+
+    protected Product(Parcel in) {
+        this.active = in.readInt();
+        this.user_like = in.readString();
+        this.date = in.readString();
+        this.content = in.readString();
+        this.effect = in.readString();
+        this.used = in.readString();
+        this.quantity = in.readInt();
+        this.feature = in.readString();
+        this.status = in.readInt();
+        this.price = in.readDouble();
+        this.img = in.readString();
+        this.name = in.readString();
+        this.brand = in.readString();
+        this.c_id = in.readString();
+        this.code = in.readString();
+        this.id = in.readString();
+        this.is_favourite = in.readInt();
+        this.numberOfProduct = in.readInt();
+    }
+
+    public static final Parcelable.Creator<Product> CREATOR = new Parcelable.Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel source) {
+            return new Product(source);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 }

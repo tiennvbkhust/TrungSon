@@ -1,6 +1,7 @@
 package com.skynetsoftware.trungson.network.api;
 
 
+import com.skynetsoftware.trungson.models.Category;
 import com.skynetsoftware.trungson.models.Product;
 import com.skynetsoftware.trungson.models.Profile;
 import com.skynetsoftware.trungson.models.Shop;
@@ -48,14 +49,28 @@ public interface TrungSonAPI {
     @GET("list_agency.php")
     Call<ApiResponse<List<Shop>>> getListShop();
 
+    @GET("category.php")
+    Call<ApiResponse<List<Category>>> getListCategoy();
+    @GET("search.php")
+    Call<ApiResponse<List<Product>>> getListProductWithFilter(@Query("c_id") String idCategory,
+                                                              @Query("price_max") String priceMax,
+                                                              @Query("price_min") String priceMin,
+                                                              @Query("type_sort") int sort);
+
     @GET("list_product.php")
     Call<ApiResponse<List<Product>>> getListProduct();
+    @GET("product_detail.php")
+    Call<ApiResponse<Product>> getDetailProduct(@Query("id")String idProduct,@Query("u_id")String idUser);
+
     @GET("map.php")
-    Call<ApiResponse<List<Shop>>> getListShop(@Query("lat") double lat,@Query("lng") double lng);
+    Call<ApiResponse<List<Shop>>> getListShop(@Query("lat") double lat, @Query("lng") double lng);
 
     @FormUrlEncoded
     @POST("forget_password.php")
     Call<ApiResponse> forgotPss(@Field("email") String email, @Field("type") int type);
+    @FormUrlEncoded
+    @POST("favourite.php")
+    Call<ApiResponse> toggleFavourite(@Field("u_id") String id, @Field("p_id") String idProduct,@Field("type") int like);
 
 
 }

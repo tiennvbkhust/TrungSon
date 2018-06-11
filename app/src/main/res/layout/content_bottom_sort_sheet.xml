@@ -25,21 +25,24 @@
         android:textSize="15sp" />
 
     <RadioGroup
+        android:id="@+id/radGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <RadioButton
+            android:id="@+id/radBestSeller"
             style="@style/sort_rad"
-            android:text="Mua nhiều nhất"
+            android:text="Sản phẩm hot"
             />
 
         <RadioButton
             style="@style/sort_rad"
-
+            android:id="@+id/radMaxPrice"
             android:text="Giá cao nhất"
             />
 
         <RadioButton
+            android:id="@+id/radLowerPrice"
             style="@style/sort_rad"
             android:text="Giá thấp nhất"
        />

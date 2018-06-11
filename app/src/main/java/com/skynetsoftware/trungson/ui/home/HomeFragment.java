@@ -1,6 +1,7 @@
 package com.skynetsoftware.trungson.ui.home;
 
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
@@ -43,7 +44,7 @@ public class HomeFragment extends BaseFragment {
     protected void initVariables() {
         bottomTabAdapter = new BottomTabAdapter(getFragmentManager());
         bottomTabAdapter.addTab(ListHomeTabFragment.newInstance());
-        bottomTabAdapter.addTab(ListProductsFragment.newInstance(null));
+        bottomTabAdapter.addTab(ListProductsFragment.newInstance());
         bottomTabAdapter.addTab(MapFragment.newInstance());
         bottomTabAdapter.addTab(ProfileFragment.newInstance());
         viewpager.setAdapter(bottomTabAdapter);
@@ -97,6 +98,11 @@ public class HomeFragment extends BaseFragment {
         if (tab < 4)
             viewpager.setCurrentItem(tab);
     }
+    public void tranToTab(Fragment tab) {
+          getFragmentManager().beginTransaction().replace(R.id.layoutRoot,tab).commit();
+    }
+
+
 
     public interface CallBackHomeFragment {
         void onClick(View v);

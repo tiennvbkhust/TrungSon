@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--https://stackoverflow.com/questions/3156781/how-to-show-android-checkbox-at-right-side-->
+
+    <CheckBox
+    android:id="@+id/cb"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:gravity="center_vertical"
+        android:padding="@dimen/dp8"
+        android:text="Sản phẩm bán chạy" />

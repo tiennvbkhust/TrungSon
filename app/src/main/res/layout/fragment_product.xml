@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="visible"
+        android:text="Không có sản phẩm nào" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcvproduct"
+        android:layout_width="match_parent"
+        android:paddingRight="@dimen/dp8"
+        android:paddingStart="@dimen/dp8"
+        android:nestedScrollingEnabled="true"
+        android:layout_height="match_parent" />
+</android.support.design.widget.CoordinatorLayout>

@@ -98,7 +98,14 @@
             android:name=".ui.verifyaccount.VerifyAccountActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
+            android:name=".ui.detailproduct.DetailProductActivity"
+            android:theme="@style/DetailProductTheme"></activity>
+        <activity
             android:name=".ui.forgotpassword.ForgotPasswordActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+  <activity
+            android:name=".ui.productOfAgency.ListProductsOfAgencyActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
 

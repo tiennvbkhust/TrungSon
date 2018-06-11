@@ -46,7 +46,12 @@ public class ListMapAgencyAdapter extends RecyclerView.Adapter<ListMapAgencyAdap
         Shop shop = list.get(position);
         if (shop.getAvatar() != null && !shop.getAvatar().isEmpty())
             Picasso.with(context).load(shop.getAvatar()).fit().centerCrop().into(holder.img);
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iCallback.onCallBack(position);
+            }
+        });
     }
 
     @Override

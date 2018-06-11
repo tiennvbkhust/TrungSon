@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.bumptech.glide.Glide;
+import com.skynetsoftware.trungson.interfaces.ICallback;
 import com.skynetsoftware.trungson.models.Shop;
 import com.skynetsoftware.trungson.ui.views.SlideLoopAdapter;
 import com.skynetsoftware.trungson.ui.views.SlideView;
@@ -24,11 +25,12 @@ import java.util.List;
 
 public class SlidePhotoAdapter extends SlideLoopAdapter {
     List<Shop> list;
+    ICallback iCallback;
 
-    public SlidePhotoAdapter(SlideView viewPager) {
+    public SlidePhotoAdapter(SlideView viewPager, ICallback iCallback) {
         super(viewPager);
         this.list = new ArrayList<>();
-
+        this.iCallback = iCallback;
 
     }
 
@@ -38,7 +40,7 @@ public class SlidePhotoAdapter extends SlideLoopAdapter {
     }
 
     @Override
-    public View getView(ViewGroup container, int position) {
+    public View getView(ViewGroup container, final int position) {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.item_photo_slide, container, false);
         final ImageView imageView = view.findViewById(R.id.img);
         TextView tv = view.findViewById(R.id.tv);
@@ -48,6 +50,12 @@ public class SlidePhotoAdapter extends SlideLoopAdapter {
         } else {
             imageView.setImageResource(R.drawable.slide_default);
         }
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iCallback.onCallBack(position);
+            }
+        });
         return view;
     }
 

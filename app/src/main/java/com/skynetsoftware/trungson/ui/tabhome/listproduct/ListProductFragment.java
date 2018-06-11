@@ -1,6 +1,7 @@
 package com.skynetsoftware.trungson.ui.tabhome.listproduct;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import com.skynetsoftware.trungson.R;
 import com.skynetsoftware.trungson.interfaces.ICallback;
 import com.skynetsoftware.trungson.models.Product;
 import com.skynetsoftware.trungson.ui.base.BaseFragment;
+import com.skynetsoftware.trungson.ui.detailproduct.DetailProductActivity;
 import com.skynetsoftware.trungson.ui.main.MainActivity;
 import com.skynetsoftware.trungson.utils.AppConstant;
 
@@ -101,6 +103,8 @@ public class ListProductFragment extends BaseFragment implements ListProductCont
 
     @Override
     public void onCallBack(int pos) {
-
+        Intent i = new Intent(getActivity(), DetailProductActivity.class);
+        i.putExtra(AppConstant.MSG, listProducts.get(pos).getId());
+        startActivity(i);
     }
 }

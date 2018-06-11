@@ -11,6 +11,10 @@
         <item name="colorAccent">@color/white</item>
 
     </style>
+    <style name="DetailProductTheme" parent="AppTheme.NoActionBar">
+        <item name="colorAccent">@color/red_organce</item>
+
+    </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

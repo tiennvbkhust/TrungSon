@@ -47,6 +47,7 @@ dependencies {
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.0'
     implementation 'com.jaeger.statusbarutil:library:1.5.0'
     implementation 'com.androidadvance:topsnackbar:1.1.1'
+    implementation 'com.daimajia.swipelayout:library:1.2.0@aar'
     implementation 'com.github.Jay-Goo:RangeSeekBar:v2.0.2'
     //    Net
     implementation('com.github.nkzawa:socket.io-client:0.6.0') {

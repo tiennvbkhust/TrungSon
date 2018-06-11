@@ -2,6 +2,7 @@ package com.skynetsoftware.trungson.ui.tabhome;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.design.widget.TabLayout;
@@ -17,14 +18,19 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.skynetsoftware.trungson.R;
+import com.skynetsoftware.trungson.application.AppController;
+import com.skynetsoftware.trungson.interfaces.ICallback;
+import com.skynetsoftware.trungson.models.Product;
 import com.skynetsoftware.trungson.models.Shop;
 import com.skynetsoftware.trungson.ui.base.BaseFragment;
 import com.skynetsoftware.trungson.ui.home.BottomTabAdapter;
 import com.skynetsoftware.trungson.ui.home.HomeFragment;
 import com.skynetsoftware.trungson.ui.main.MainActivity;
+import com.skynetsoftware.trungson.ui.productOfAgency.ListProductsOfAgencyActivity;
 import com.skynetsoftware.trungson.ui.tabhome.listagency.ListAgencyFragment;
 import com.skynetsoftware.trungson.ui.tabhome.listfood.ListFoodFragment;
 import com.skynetsoftware.trungson.ui.tabhome.listproduct.ListProductFragment;
@@ -48,6 +54,8 @@ public class ListHomeTabFragment extends BaseFragment implements ListProductCont
     SlideView slidePhotos;
     @BindView(R.id.tabs)
     TabLayout tabs;
+    @BindView(R.id.tvNUmberOfCart)
+    TextView tvNUmberOfCart;
 
     @BindView(R.id.loading)
     ProgressBar loading;
@@ -59,6 +67,16 @@ public class ListHomeTabFragment extends BaseFragment implements ListProductCont
 
     private SlidePhotoAdapter slidePhotoAdapter;
     private BottomTabAdapter bottomTabAdapter;
+    private List<Shop> listShop;
+    private ICallback callBackClickOnImageSlide = new ICallback() {
+        @Override
+        public void onCallBack(int pos) {
+            if (listShop == null || listShop.size() == 0) return;
+            Intent i = new Intent(getActivity(), ListProductsOfAgencyActivity.class);
+            i.putExtra("idAgency", listShop.get(pos).getId());
+            startActivity(i);
+        }
+    };
 
     public static ListHomeTabFragment newInstance() {
         ListHomeTabFragment fragment = new ListHomeTabFragment();
@@ -80,7 +98,7 @@ public class ListHomeTabFragment extends BaseFragment implements ListProductCont
     protected void initVariables() {
         presenter = new ListProductPresenter(this);
         presenter.getListShop();
-        slidePhotoAdapter = new SlidePhotoAdapter(slidePhotos);
+        slidePhotoAdapter = new SlidePhotoAdapter(slidePhotos, callBackClickOnImageSlide);
         slidePhotos.setAdapter(slidePhotoAdapter);
 
         bottomTabAdapter = new BottomTabAdapter(getFragmentManager());
@@ -147,7 +165,21 @@ public class ListHomeTabFragment extends BaseFragment implements ListProductCont
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (AppController.getInstance().getListProducts().size() > 0) {
+            int total = 0;
+            for (Product product : AppController.getInstance().getListProducts()) {
+                total += product.getNumberOfProduct();
+            }
+            tvNUmberOfCart.setText(total + "");
+            tvNUmberOfCart.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
     public void onSuccessGetList(List<Shop> listShop) {
+        this.listShop = listShop;
         slidePhotoAdapter.setUrlPhotos(listShop);
         slidePhotos.setHintView(new ColorPointHintViewCustom(getContext(), Color.parseColor("#ea88c2"), Color.WHITE));
         LogUtils.e("ssss");

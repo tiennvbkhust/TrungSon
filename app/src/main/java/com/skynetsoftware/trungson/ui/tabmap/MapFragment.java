@@ -3,6 +3,7 @@ package com.skynetsoftware.trungson.ui.tabmap;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -37,6 +38,7 @@ import com.skynetsoftware.trungson.models.Shop;
 import com.skynetsoftware.trungson.ui.base.BaseFragment;
 import com.skynetsoftware.trungson.ui.home.HomeFragment;
 import com.skynetsoftware.trungson.ui.main.MainActivity;
+import com.skynetsoftware.trungson.ui.productOfAgency.ListProductsOfAgencyActivity;
 import com.skynetsoftware.trungson.ui.views.StartSnapHelper;
 import com.skynetsoftware.trungson.utils.AppConstant;
 import com.skynetsoftware.trungson.utils.CommomUtils;
@@ -63,7 +65,7 @@ public class MapFragment extends BaseFragment implements OnMapReadyCallback, ICa
     private HomeFragment.CallBackHomeFragment callBackHomeFragment;
     private ListAgencyContract.Presenter presenter;
     private List<Shop> listAgencies;
-    HashMap<Shop, Marker> markerHashMap = new HashMap<>();
+    HashMap<Marker, Shop> markerHashMap = new HashMap<>();
     LatLngBounds.Builder latLngBounds;
 
     public static MapFragment newInstance() {
@@ -155,8 +157,8 @@ public class MapFragment extends BaseFragment implements OnMapReadyCallback, ICa
     }
 
     private void addMyLocation() {
-        presenter.getListAgency(myLatlng);
         if (myLatlng != null && mMap != null) {
+            presenter.getListAgency(myLatlng);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLatlng, 15));
             if (myMarker == null) {
                 myMarker = mMap.addMarker(new MarkerOptions().position(myLatlng).icon(CommomUtils.bitmapDescriptorFromVector(getContext(), R.drawable.dot)));
@@ -179,6 +181,17 @@ public class MapFragment extends BaseFragment implements OnMapReadyCallback, ICa
                 if(latLngBounds!=null){
                     mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds.build(),15));
                 }
+            }
+        });
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                if (markerHashMap.get(marker )!= null) {
+                    Intent i =new Intent(getActivity(), ListProductsOfAgencyActivity.class);
+                    i.putExtra("idAgency",markerHashMap.get(marker).getId());
+                    startActivity(i);
+                }
+                return false;
             }
         });
     }
@@ -227,7 +240,7 @@ public class MapFragment extends BaseFragment implements OnMapReadyCallback, ICa
                 Marker marker = mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(shop.getLat(),shop.getLng()))
                         .icon(CommomUtils.bitmapDescriptorFromVector(getContext(), R.drawable.ic_marker)));
-                markerHashMap.put(shop, marker);
+                markerHashMap.put(marker, shop);
                 latLngBounds.include(marker.getPosition());
             }
             mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds.build(),15));
@@ -273,6 +286,8 @@ public class MapFragment extends BaseFragment implements OnMapReadyCallback, ICa
 
     @Override
     public void onCallBack(int pos) {
-
+        Intent i =new Intent(getActivity(), ListProductsOfAgencyActivity.class);
+        i.putExtra("idAgency",listAgencies.get(pos).getId());
+        startActivity(i);
     }
 }

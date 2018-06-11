@@ -3,6 +3,7 @@ package com.skynetsoftware.trungson.ui.tabhome.listagency;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -25,7 +26,10 @@ import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.interfaces.ICallback;
 import com.skynetsoftware.trungson.models.Shop;
 import com.skynetsoftware.trungson.ui.base.BaseFragment;
+import com.skynetsoftware.trungson.ui.home.HomeFragment;
 import com.skynetsoftware.trungson.ui.main.MainActivity;
+import com.skynetsoftware.trungson.ui.productOfAgency.ListProductsOfAgencyActivity;
+import com.skynetsoftware.trungson.ui.tabproduct.ListProductsFragment;
 import com.skynetsoftware.trungson.utils.AppConstant;
 
 import java.util.List;
@@ -147,6 +151,8 @@ public class ListAgencyFragment extends BaseFragment implements ListAgencyContra
 
     @Override
     public void onCallBack(int pos) {
-
+        Intent i =new Intent(getActivity(), ListProductsOfAgencyActivity.class);
+        i.putExtra("idAgency",listAgencies.get(pos).getId());
+        startActivity(i);
     }
 }

@@ -9,11 +9,16 @@ import com.blankj.utilcode.util.Utils;
 import com.google.gson.Gson;
 
 import com.skynetsoftware.trungson.R;
+import com.skynetsoftware.trungson.models.Filter;
+import com.skynetsoftware.trungson.models.Product;
 import com.skynetsoftware.trungson.models.Profile;
 import com.skynetsoftware.trungson.utils.AppConstant;
 import com.sromku.simple.fb.Permission;
 import com.sromku.simple.fb.SimpleFacebook;
 import com.sromku.simple.fb.SimpleFacebookConfiguration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
@@ -25,7 +30,9 @@ public class AppController extends MultiDexApplication {
     private static AppController instance;
     private Profile mProfileUser;
     private SPUtils mSetting;
-
+    private Filter mFilter;
+    private int typeSort = -1;
+    private List<Product> listProducts;
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
@@ -46,7 +53,7 @@ public class AppController extends MultiDexApplication {
 //        Fabric.with(fabric);
         instance = this;
         Utils.init(this);
-
+        listProducts = new ArrayList<>();
         mSetting = new SPUtils(AppConstant.KEY_SETTING);
         setmProfileUser(new Gson().fromJson(mSetting.getString(AppConstant.KEY_PROFILE), Profile.class));
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
@@ -71,9 +78,36 @@ public class AppController extends MultiDexApplication {
         return mSetting;
     }
 
+    public static void setInstance(AppController instance) {
+        AppController.instance = instance;
+    }
+
+    public void setmSetting(SPUtils mSetting) {
+        this.mSetting = mSetting;
+    }
+
+    public int getTypeSort() {
+        return typeSort;
+    }
+
+    public void setTypeSort(int typeSort) {
+        this.typeSort = typeSort;
+    }
+
+    public Filter getmFilter() {
+        return mFilter;
+    }
+
+    public void setmFilter(Filter mFilter) {
+        this.mFilter = mFilter;
+    }
 
     public Profile getmProfileUser() {
         return mProfileUser;
+    }
+
+    public List<Product> getListProducts() {
+        return listProducts;
     }
 
     public void setmProfileUser(Profile mProfileUser) {
