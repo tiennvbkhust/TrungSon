@@ -153,6 +153,8 @@ public class ListAgencyFragment extends BaseFragment implements ListAgencyContra
     public void onCallBack(int pos) {
         Intent i =new Intent(getActivity(), ListProductsOfAgencyActivity.class);
         i.putExtra("idAgency",listAgencies.get(pos).getId());
+        i.putExtra("url", listAgencies.get(pos).getAvatar());
+
         startActivity(i);
     }
 }

@@ -276,6 +276,7 @@ public class ListProductsOfAgencyActivity extends BaseActivity implements ListPr
         bottomTabAdapter = new BottomTabAdapter(getSupportFragmentManager());
         if (getIntent().getExtras() != null) {
             idAgency = getIntent().getExtras().getString("idAgency");
+            String url = getIntent().getExtras().getString("url");
 
             if (idAgency == null || idAgency.isEmpty()) {
                 btnMsg.setVisibility(View.GONE);

@@ -27,6 +27,7 @@ import com.skynetsoftware.trungson.interfaces.ICallback;
 import com.skynetsoftware.trungson.models.Product;
 import com.skynetsoftware.trungson.models.Shop;
 import com.skynetsoftware.trungson.ui.base.BaseFragment;
+import com.skynetsoftware.trungson.ui.cart.CartActivity;
 import com.skynetsoftware.trungson.ui.home.BottomTabAdapter;
 import com.skynetsoftware.trungson.ui.home.HomeFragment;
 import com.skynetsoftware.trungson.ui.main.MainActivity;
@@ -74,6 +75,7 @@ public class ListHomeTabFragment extends BaseFragment implements ListProductCont
             if (listShop == null || listShop.size() == 0) return;
             Intent i = new Intent(getActivity(), ListProductsOfAgencyActivity.class);
             i.putExtra("idAgency", listShop.get(pos).getId());
+            i.putExtra("url", listShop.get(pos).getAvatar());
             startActivity(i);
         }
     };
@@ -160,6 +162,7 @@ public class ListHomeTabFragment extends BaseFragment implements ListProductCont
 
                 break;
             case R.id.imgCart:
+                startActivity(new Intent(getActivity(), CartActivity.class));
                 break;
         }
     }
@@ -174,6 +177,8 @@ public class ListHomeTabFragment extends BaseFragment implements ListProductCont
             }
             tvNUmberOfCart.setText(total + "");
             tvNUmberOfCart.setVisibility(View.VISIBLE);
+        }else{
+            tvNUmberOfCart.setVisibility(View.GONE);
         }
     }
 

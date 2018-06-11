@@ -1,5 +1,6 @@
 package com.skynetsoftware.trungson.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,7 @@ import com.skynetsoftware.trungson.R;
 import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.models.Profile;
 import com.skynetsoftware.trungson.ui.base.BaseActivity;
+import com.skynetsoftware.trungson.ui.cart.CartActivity;
 import com.skynetsoftware.trungson.ui.home.HomeFragment;
 import com.skynetsoftware.trungson.ui.tabproduct.ListProductsFragment;
 import com.skynetsoftware.trungson.ui.views.ProgressDialogCustom;
@@ -148,6 +150,7 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
 
                 break;
             case R.id.nav_c_cart:
+                startActivity(new Intent(MainActivity.this, CartActivity.class));
                 break;
             case R.id.nav_c_notification:
                 break;
@@ -179,11 +182,21 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
         }
     }
 
-    public void changeNavUI(int idViewChoose){
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        for (Fragment fragment : getSupportFragmentManager().getFragments()) {
+//            if (fragment != null) fragment.onResume();
+//
+//        }
+    }
+
+    public void changeNavUI(int idViewChoose) {
         if (currentMenu != null) currentMenu.getChildAt(0).setVisibility(View.INVISIBLE);
         currentMenu = (LinearLayout) findViewById(idViewChoose);
         currentMenu.getChildAt(0).setVisibility(View.VISIBLE);
     }
+
     @Override
     public void onClick(View v) {
         HomeFragment homeFragment = (HomeFragment) getSupportFragmentManager().findFragmentByTag("home");

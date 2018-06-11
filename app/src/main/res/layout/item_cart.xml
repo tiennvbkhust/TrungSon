@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="120dp"
     android:layout_marginBottom="@dimen/dp8"
     android:layout_marginLeft="@dimen/dp16"
     android:layout_marginRight="@dimen/dp16"
@@ -14,8 +14,9 @@
     app:cardElevation="@dimen/dp2">
 
     <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe"
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="wrap_content">
         <!-- Bottom View Start-->
         <LinearLayout
             android:id="@+id/bottom_wrapper"
@@ -25,20 +26,39 @@
             android:orientation="horizontal"
             android:weightSum="1">
             <!--What you want to show-->
-            <ImageView
-                android:id="@+id/btnShowDetail"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#eeede7"
-                android:layout_weight="0.5"
-                app:srcCompat="@drawable/ic_cart"/>
-            <ImageView
-                android:id="@+id/btnDelete"
+                android:foreground="?selectableItemBackground"
+                android:id="@+id/btnShowDetail"
+                android:layout_gravity="center"
+                android:layout_weight="0.5">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_cart" />
+            </FrameLayout>
+
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#eb3148"
-                android:layout_weight="0.5"
-                app:srcCompat="@drawable/ic_delete"/>
+                android:foreground="?selectableItemBackground"
+                android:layout_gravity="center"
+                android:id="@+id/btnDelete"
+                android:layout_weight="0.5">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_delete" />
+            </FrameLayout>
+
+
         </LinearLayout>
         <!-- Bottom View End-->
 
@@ -48,7 +68,7 @@
             android:layout_height="match_parent"
             android:background="#ffffff"
             android:orientation="horizontal"
-            android:padding="10dp">
+          >
             <!--What you want to show in SurfaceView-->
             <LinearLayout
 
@@ -59,9 +79,10 @@
                 <ImageView
                     android:id="@+id/imgProduct"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"
+                     />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -69,7 +90,7 @@
                     android:layout_weight="3"
                     android:gravity="center_vertical"
                     android:orientation="vertical"
-                    android:padding="@dimen/dp8">
+                    android:padding="@dimen/dp16">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -81,8 +102,8 @@
                             android:id="@+id/tvNameProduct"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:singleLine="true"
                             android:layout_weight="1"
+                            android:singleLine="true"
                             android:text="CAO HA THU O LAVA"
                             android:textColor="#1a1a1c"
                             android:textSize="@dimen/dps16" />

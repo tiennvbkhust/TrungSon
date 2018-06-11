@@ -120,4 +120,8 @@ public class AppController extends MultiDexApplication {
         }
 
     }
+
+    public void add(Product product) throws CloneNotSupportedException {
+        listProducts.add((Product)product.clone());
+    }
 }

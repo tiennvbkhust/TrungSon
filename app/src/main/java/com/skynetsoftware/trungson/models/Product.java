@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Product implements Parcelable {
+public class Product implements Parcelable , Cloneable{
     @Expose
     @SerializedName("active")
     private int active;
@@ -61,6 +61,11 @@ public class Product implements Parcelable {
     @Expose
     @SerializedName("numberOfProduct")
     private int numberOfProduct;
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
     public int getNumberOfProduct() {
         return numberOfProduct;

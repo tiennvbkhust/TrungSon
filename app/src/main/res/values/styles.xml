@@ -163,5 +163,12 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="layoutTextInPutAddress">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/dp8</item>
+        <item name="android:layout_marginBottom">@dimen/dp8</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <dimen name="actionBarSize">32dp</dimen>
 </resources>

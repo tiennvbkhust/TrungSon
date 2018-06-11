@@ -1,6 +1,7 @@
 package com.skynetsoftware.trungson.ui.detailproduct;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -22,6 +23,7 @@ import com.skynetsoftware.trungson.R;
 import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.models.Product;
 import com.skynetsoftware.trungson.ui.base.BaseActivity;
+import com.skynetsoftware.trungson.ui.cart.CartActivity;
 import com.skynetsoftware.trungson.ui.views.ProgressDialogCustom;
 import com.skynetsoftware.trungson.utils.AppConstant;
 import com.squareup.picasso.Picasso;
@@ -90,7 +92,13 @@ public class DetailProductActivity extends BaseActivity implements DetailProduct
             presenter.getDetail(getIntent().getExtras().getString(AppConstant.MSG));
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         countNumberInCart();
+
     }
 
     private void countNumberInCart() {
@@ -101,6 +109,9 @@ public class DetailProductActivity extends BaseActivity implements DetailProduct
             }
             numberCart.setText(total + "");
             numberCart.setVisibility(View.VISIBLE);
+        }else{
+            numberCart.setVisibility(View.INVISIBLE);
+
         }
     }
 
@@ -166,25 +177,45 @@ public class DetailProductActivity extends BaseActivity implements DetailProduct
                 onBackPressed();
                 break;
             case R.id.imgCart:
+                startActivity(new Intent(DetailProductActivity.this, CartActivity.class));
                 break;
             case R.id.div: {
                 int number = Integer.valueOf(numberOfProducts.getText().toString());
                 number--;
                 if (number < 1) number = 1;
-                numberOfProducts.setText(number+"");
+                numberOfProducts.setText(number + "");
                 break;
             }
             case R.id.plus: {
                 int number = Integer.valueOf(numberOfProducts.getText().toString());
-                numberOfProducts.setText(++number+"");
+                numberOfProducts.setText(++number + "");
                 break;
             }
             case R.id.addTocart:
                 int number = Integer.valueOf(numberOfProducts.getText().toString());
+                boolean flagContain = false;
+                int i=0;
                 product.setNumberOfProduct(number);
-                AppController.getInstance().getListProducts().add(product);
+                for (Product item : AppController.getInstance().getListProducts()) {
+                    if (item.getId().equals(product.getId())) {
+                        flagContain = true;
+                        item.setNumberOfProduct(product.getNumberOfProduct()+item.getNumberOfProduct());
+                        AppController.getInstance().getListProducts().set(i,item);
+                        break;
+                    }
+                    i++;
+                }
+                if (!flagContain) {
+                    try {
+                        AppController.getInstance().add(product);
+                    } catch (CloneNotSupportedException e) {
+                        e.printStackTrace();
+                        showToast("Không thể thêm vào giỏ.",AppConstant.NEGATIVE);
+                    }
+                }
                 number = 1;
-                numberOfProducts.setText(number+"");
+                numberOfProducts.setText(number + "");
+                product.setNumberOfProduct(number);
                 countNumberInCart();
                 break;
         }
@@ -219,7 +250,7 @@ public class DetailProductActivity extends BaseActivity implements DetailProduct
                 presenter.toggleFav(product.getId(), isChecked ? 1 : 2);
             }
         });
-        if(product.getImg() != null && !product.getImg().isEmpty()){
+        if (product.getImg() != null && !product.getImg().isEmpty()) {
             Picasso.with(this).load(product.getImg()).fit().centerCrop().into(image);
         }
     }

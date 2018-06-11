@@ -189,6 +189,8 @@ public class MapFragment extends BaseFragment implements OnMapReadyCallback, ICa
                 if (markerHashMap.get(marker )!= null) {
                     Intent i =new Intent(getActivity(), ListProductsOfAgencyActivity.class);
                     i.putExtra("idAgency",markerHashMap.get(marker).getId());
+                    i.putExtra("url", markerHashMap.get(marker).getAvatar());
+
                     startActivity(i);
                 }
                 return false;
@@ -288,6 +290,8 @@ public class MapFragment extends BaseFragment implements OnMapReadyCallback, ICa
     public void onCallBack(int pos) {
         Intent i =new Intent(getActivity(), ListProductsOfAgencyActivity.class);
         i.putExtra("idAgency",listAgencies.get(pos).getId());
+        i.putExtra("url", listAgencies.get(pos).getAvatar());
+
         startActivity(i);
     }
 }

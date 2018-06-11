@@ -26,4 +26,10 @@
     <string name="product_state_format"><![CDATA[Tình trạng: <font color="#009344">%s</font>]]></string>
     <string name="product_state_format_ots"><![CDATA[Tình trạng: <font color="#f15a29">%s</font>]]></string>
     <string name="payment_amp_card"><![CDATA[Payment & cards]]></string>
+    <string name="total_format"><![CDATA[Tổng tiền: <b><font color="#000">%,.0f</font></b>]]></string>
+
+    <array name="payment">
+        <item >Tiền mặt</item>
+        <item >Thẻ</item>
+    </array>
 </resources>
