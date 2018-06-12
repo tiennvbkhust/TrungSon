@@ -2,6 +2,7 @@ package com.skynetsoftware.trungson.network.api;
 
 
 import com.skynetsoftware.trungson.models.Category;
+import com.skynetsoftware.trungson.models.Notification;
 import com.skynetsoftware.trungson.models.Product;
 import com.skynetsoftware.trungson.models.Profile;
 import com.skynetsoftware.trungson.models.Shop;
@@ -35,6 +36,8 @@ public interface TrungSonAPI {
 
     @GET("logingg.php")
     Call<ApiResponse<Profile>> loginWithGG(@Query("name") String username, @Query("email") String email, @Query("ggid") String fbid);
+    @GET("notification_detail.php")
+    Call<ApiResponse<Notification>> getDetailNotification(@Query("id") String id, @Query("type") int type, @Query("user_id") String shID);
 
     @FormUrlEncoded
     @POST("register.php")
@@ -45,9 +48,13 @@ public interface TrungSonAPI {
 
     @GET("get_info.php")
     Call<ApiResponse<Profile>> getProfile(@Query("id") String uid, @Query("type") int type);
-
+    @GET("notification.php")
+    Call<ApiResponse<List<Notification>>> getListNotification(@Query("id") String uid, @Query("type") int type);
     @GET("list_agency.php")
     Call<ApiResponse<List<Shop>>> getListShop();
+    @FormUrlEncoded
+    @POST("rating.php")
+    Call<ApiResponse> writeReview(@Field("id") String idShop, @Field("star") double star);
 
     @GET("category.php")
     Call<ApiResponse<List<Category>>> getListCategoy();

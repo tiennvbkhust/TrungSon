@@ -48,12 +48,12 @@
                         android:background="@drawable/nav_bg_circle"
                         android:backgroundTint="@color/orage"
                         android:gravity="center"
+                        android:padding="0dp"
                         android:text="2"
                         android:paddingLeft="@dimen/dp5"
                         android:paddingRight="@dimen/dp5"
                         android:paddingTop="@dimen/dp2"
                         android:paddingBottom="@dimen/dp2"
-                        android:layout_marginLeft="@dimen/dp5"
                         android:textColor="@color/white"
                         android:textSize="@dimen/dps10"
                         android:visibility="gone" />

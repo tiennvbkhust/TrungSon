@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blankj.utilcode.util.LogUtils;
+import com.google.gson.Gson;
 import com.skynetsoftware.trungson.R;
 import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.models.Product;
@@ -51,6 +53,7 @@ public class CartFragment extends BaseFragment implements ListProductCartAdapter
     @Override
     protected void initVariables() {
         list = AppController.getInstance().getListProducts();
+        LogUtils.e(new Gson().toJson(list));
         rcvproduct.setAdapter(new ListProductCartAdapter(getContext(), list, this));
     }
 

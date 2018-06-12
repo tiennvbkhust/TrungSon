@@ -2,6 +2,7 @@ package com.skynetsoftware.trungson.ui.productOfAgency;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
@@ -33,6 +34,7 @@ import com.skynetsoftware.trungson.ui.home.BottomTabAdapter;
 import com.skynetsoftware.trungson.ui.home.HomeFragment;
 import com.skynetsoftware.trungson.ui.main.MainActivity;
 import com.skynetsoftware.trungson.ui.tabproduct.product.ProductFragment;
+import com.skynetsoftware.trungson.ui.writereviewshop.WriteReviewShopActivity;
 import com.skynetsoftware.trungson.utils.AppConstant;
 
 import java.util.List;
@@ -315,8 +317,14 @@ public class ListProductsOfAgencyActivity extends BaseActivity implements ListPr
                onBackPressed();
                 break;
             case R.id.btn_msg:
+                Intent i = new Intent(ListProductsOfAgencyActivity.this, WriteReviewShopActivity.class);
+                i.putExtra(AppConstant.MSG,idAgency);
+                startActivity(i);
                 break;
             case R.id.btn_rate:
+                Intent i2 = new Intent(ListProductsOfAgencyActivity.this, WriteReviewShopActivity.class);
+                i2.putExtra(AppConstant.MSG,idAgency);
+                startActivity(i2);
                 break;
         }
     }

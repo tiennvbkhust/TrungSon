@@ -3,6 +3,7 @@
     <color name="colorPrimary">#eeeeee</color>
     <color name="colorPrimaryDark">#eeeeee</color>
     <color name="colorAccent">#ea88c2</color>
+    <color name="colorPinkWhite">#fff3f3</color>
     <color name="colorRed">#ef3a42</color>
     <color name="colorRedLight">#f37b81</color>
     <color name="colorGrayLight">#b2b2b2</color>
@@ -42,6 +43,7 @@
     <color name="pink_alpha">#f2d1cb</color>
     <color name="green">#395838</color>
     <color name="orage">#ff9f1a</color>
+    <color name="yello">#fff600</color>
     <color name="blue">#507cc0</color>
     <color name="gray">#999999</color>
     <color name="bgJob">#eeeeee</color>

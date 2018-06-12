@@ -104,9 +104,9 @@
         <item name="android:drawableLeft">@drawable/ic_class_black_24dp</item>
     </style>
     <style name="rate" parent="Theme.AppCompat">
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/yello</item>
         <item name="colorControlNormal">#8024253d</item>
-        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/yello</item>
     </style>
 
     <style name="profile_layout_item">

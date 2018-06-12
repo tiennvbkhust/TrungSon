@@ -23,7 +23,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PaymentInforFragment extends BaseFragment  implements ListProductCartAdapter.OnListenerClickItemEvent{
+public class PaymentInforFragment extends BaseFragment  {
     public static PaymentInforFragment newInstance() {
         
         Bundle args = new Bundle();
@@ -54,9 +54,16 @@ public class PaymentInforFragment extends BaseFragment  implements ListProductCa
     @Override
     protected void initVariables() {
         list = AppController.getInstance().getListProducts();
-        rcvproduct.setAdapter(new ListProductCartAdapter(getContext(), list, this));
+        rcvproduct.setAdapter(new ListProductPaymentAdapter(getContext(), list));
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         countProducts();
     }
+
     public void countProducts() {
         List<Product> list = AppController.getInstance().getListProducts();
         int total = 0;
@@ -74,16 +81,4 @@ public class PaymentInforFragment extends BaseFragment  implements ListProductCa
     }
 
 
-    @Override
-    public void onClickNoAccept(int position) {
-        ((CartActivity) getActivity()).countProducts();
-    }
-
-    @Override
-    public void onClickAccept(int position) {
-        if (AppController.getInstance().getListProducts().size() == 0) return;
-        Intent i = new Intent(getActivity(), DetailProductActivity.class);
-        i.putExtra(AppConstant.MSG, AppController.getInstance().getListProducts().get(position).getId());
-        startActivity(i);
-    }
 }

@@ -104,6 +104,14 @@
         <activity
             android:name=".ui.forgotpassword.ForgotPasswordActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ui.writereviewshop.WriteReviewShopActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ui.DetailNotificationActivity.DetailNotificationActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity> <activity
+            android:name=".ui.notification.NotificationActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity
             android:name=".ui.productOfAgency.ListProductsOfAgencyActivity"

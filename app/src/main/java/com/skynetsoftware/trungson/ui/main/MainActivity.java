@@ -17,6 +17,7 @@ import com.skynetsoftware.trungson.models.Profile;
 import com.skynetsoftware.trungson.ui.base.BaseActivity;
 import com.skynetsoftware.trungson.ui.cart.CartActivity;
 import com.skynetsoftware.trungson.ui.home.HomeFragment;
+import com.skynetsoftware.trungson.ui.notification.NotificationActivity;
 import com.skynetsoftware.trungson.ui.tabproduct.ListProductsFragment;
 import com.skynetsoftware.trungson.ui.views.ProgressDialogCustom;
 import com.skynetsoftware.trungson.utils.AppConstant;
@@ -153,6 +154,7 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
                 startActivity(new Intent(MainActivity.this, CartActivity.class));
                 break;
             case R.id.nav_c_notification:
+                startActivity(new Intent(MainActivity.this, NotificationActivity.class));
                 break;
             case R.id.nav_c_history:
                 break;
