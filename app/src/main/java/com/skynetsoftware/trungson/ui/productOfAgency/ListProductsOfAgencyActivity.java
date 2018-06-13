@@ -36,6 +36,7 @@ import com.skynetsoftware.trungson.ui.main.MainActivity;
 import com.skynetsoftware.trungson.ui.tabproduct.product.ProductFragment;
 import com.skynetsoftware.trungson.ui.writereviewshop.WriteReviewShopActivity;
 import com.skynetsoftware.trungson.utils.AppConstant;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -46,7 +47,8 @@ import butterknife.OnClick;
 public class ListProductsOfAgencyActivity extends BaseActivity implements ListProductsContract.View {
 
     @BindView(R.id.imgHome)
-    ImageView imgHome;
+    ImageView imgHome;   @BindView(R.id.image)
+    ImageView image;
     @BindView(R.id.toolbarCbSort)
     ImageView toolbarCbSort;
     @BindView(R.id.toolbarCbFilter)
@@ -283,6 +285,9 @@ public class ListProductsOfAgencyActivity extends BaseActivity implements ListPr
             if (idAgency == null || idAgency.isEmpty()) {
                 btnMsg.setVisibility(View.GONE);
                 btnRate.setVisibility(View.GONE);
+            }
+            if(url!=null && !url.isEmpty()){
+                Picasso.with(this).load(url).fit().centerCrop().into(image);
             }
         }
     }

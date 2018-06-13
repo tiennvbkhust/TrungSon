@@ -40,6 +40,7 @@
                 <android.support.design.widget.TextInputLayout style="@style/layoutTextInPutAddress">
 
                     <EditText
+                        android:id="@+id/edtName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Tên của bạn"
@@ -49,6 +50,7 @@
                 <android.support.design.widget.TextInputLayout style="@style/layoutTextInPutAddress">
 
                     <EditText
+                        android:id="@+id/edtAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Địa chỉ"
@@ -58,6 +60,7 @@
                 <android.support.design.widget.TextInputLayout style="@style/layoutTextInPutAddress">
 
                     <EditText
+                        android:id="@+id/edtCity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Tỉnh thành"
@@ -103,7 +106,7 @@
             app:layout_constraintTop_toBottomOf="@+id/info">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/tvPromo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mã khuyến mãi (Nếu có)"
@@ -118,6 +121,7 @@
                 <android.support.design.widget.TextInputLayout style="@style/layoutTextInPutAddress">
 
                     <EditText
+                        android:id="@+id/edtCodePromo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Nhập mã"
@@ -156,6 +160,7 @@
                 <android.support.design.widget.TextInputLayout style="@style/layoutTextInPutAddress">
 
                     <EditText
+                        android:id="@+id/edtPhone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Điện thoại"
@@ -166,6 +171,7 @@
                 <android.support.design.widget.TextInputLayout style="@style/layoutTextInPutAddress">
 
                     <EditText
+                        android:id="@+id/edtNote"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Ghi chú"

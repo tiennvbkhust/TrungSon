@@ -79,9 +79,7 @@ public class ListAgencyFragment extends BaseFragment implements ListAgencyContra
         mFusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this);
         myLatlng = new Gson().fromJson(AppController.getInstance().getmSetting().getString(AppConstant.LATLNG), LatLng.class);
-        if(myLatlng != null){
-            presenter.getListAgency(myLatlng);
-        }
+
     }
 
     @SuppressLint("MissingPermission")
@@ -92,6 +90,14 @@ public class ListAgencyFragment extends BaseFragment implements ListAgencyContra
             mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
             mFusedLocationClient.getLastLocation()
                     .addOnSuccessListener(this);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(myLatlng != null){
+            presenter.getListAgency(myLatlng);
         }
     }
 

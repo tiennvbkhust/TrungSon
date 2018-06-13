@@ -6,7 +6,7 @@ import com.skynetsoftware.trungson.ui.base.OnFinishListener;
 
 public interface AddressInforContract  {
     interface View extends BaseView{
-        void onSuccessGetInfor();
+        void onSuccessGetInfor(String name,String address,String city,String phone, String note,String promo,String avatar);
         void onSuccessUpdateInfor();
     }
     interface Presenter extends BasePresenter,AddressInforListener{
@@ -19,7 +19,7 @@ public interface AddressInforContract  {
         void updateInfor(String name,String address,String city,String phone, String note,String promo,String avatar);
     }
     interface AddressInforListener extends OnFinishListener{
-        void onSuccessGetInfor();
+        void onSuccessGetInfor(String name,String address,String city,String phone, String note,String promo,String avatar);
         void onSuccessUpdateInfor();
     }
 }

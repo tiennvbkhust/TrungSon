@@ -45,7 +45,8 @@ public class SlidePhotoAdapter extends SlideLoopAdapter {
         final ImageView imageView = view.findViewById(R.id.img);
         TextView tv = view.findViewById(R.id.tv);
         if (list.size() > 0 && position < list.size() && list.get(position).getAvatar() != null && !list.get(position).getAvatar().isEmpty()) {
-            Glide.with(container.getContext()).load(list.get(position).getAvatar()).into(imageView);
+//            Glide.with(container.getContext()).load(list.get(position).getAvatar()).into(imageView);
+            Picasso.with(container.getContext()).load(list.get(position).getAvatar()).into(imageView);
             tv.setText(list.get(position).getName());
         } else {
             imageView.setImageResource(R.drawable.slide_default);

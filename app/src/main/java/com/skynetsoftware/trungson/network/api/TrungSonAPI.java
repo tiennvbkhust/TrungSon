@@ -1,6 +1,7 @@
 package com.skynetsoftware.trungson.network.api;
 
 
+import com.skynetsoftware.trungson.models.Booking;
 import com.skynetsoftware.trungson.models.Category;
 import com.skynetsoftware.trungson.models.Notification;
 import com.skynetsoftware.trungson.models.Product;
@@ -36,6 +37,7 @@ public interface TrungSonAPI {
 
     @GET("logingg.php")
     Call<ApiResponse<Profile>> loginWithGG(@Query("name") String username, @Query("email") String email, @Query("ggid") String fbid);
+
     @GET("notification_detail.php")
     Call<ApiResponse<Notification>> getDetailNotification(@Query("id") String id, @Query("type") int type, @Query("user_id") String shID);
 
@@ -48,16 +50,27 @@ public interface TrungSonAPI {
 
     @GET("get_info.php")
     Call<ApiResponse<Profile>> getProfile(@Query("id") String uid, @Query("type") int type);
+
     @GET("notification.php")
     Call<ApiResponse<List<Notification>>> getListNotification(@Query("id") String uid, @Query("type") int type);
+
     @GET("list_agency.php")
     Call<ApiResponse<List<Shop>>> getListShop();
+
     @FormUrlEncoded
     @POST("rating.php")
     Call<ApiResponse> writeReview(@Field("id") String idShop, @Field("star") double star);
 
+    @FormUrlEncoded
+    @POST("booking.php")
+    Call<ApiResponse<String>> paidCart(@Field("u_id") String uId, @Field("p_id") String p_id,
+                                        @Field("note") String note, @Field("promotion") String promotionCode, @Field("price") double price,
+                                        @Field("name") String name, @Field("address") String address, @Field("city") String city, @Field("phone") String phone,
+                                        @Field("method_payment") int typePayment);
+
     @GET("category.php")
     Call<ApiResponse<List<Category>>> getListCategoy();
+
     @GET("search.php")
     Call<ApiResponse<List<Product>>> getListProductWithFilter(@Query("c_id") String idCategory,
                                                               @Query("price_max") String priceMax,
@@ -66,8 +79,9 @@ public interface TrungSonAPI {
 
     @GET("list_product.php")
     Call<ApiResponse<List<Product>>> getListProduct();
+
     @GET("product_detail.php")
-    Call<ApiResponse<Product>> getDetailProduct(@Query("id")String idProduct,@Query("u_id")String idUser);
+    Call<ApiResponse<Product>> getDetailProduct(@Query("id") String idProduct, @Query("u_id") String idUser);
 
     @GET("map.php")
     Call<ApiResponse<List<Shop>>> getListShop(@Query("lat") double lat, @Query("lng") double lng);
@@ -75,9 +89,10 @@ public interface TrungSonAPI {
     @FormUrlEncoded
     @POST("forget_password.php")
     Call<ApiResponse> forgotPss(@Field("email") String email, @Field("type") int type);
+
     @FormUrlEncoded
     @POST("favourite.php")
-    Call<ApiResponse> toggleFavourite(@Field("u_id") String id, @Field("p_id") String idProduct,@Field("type") int like);
+    Call<ApiResponse> toggleFavourite(@Field("u_id") String id, @Field("p_id") String idProduct, @Field("type") int like);
 
 
 }
