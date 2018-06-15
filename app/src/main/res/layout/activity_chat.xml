@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.skynetsoftware.trungson.ui.views.ChatParentLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/row_chat_ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/lauyouttoolbar"
+        style="@style/layout_toolbar"
+        android:gravity="center_vertical"
+     >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:elevation="3dp">
+
+            <ImageView
+                android:id="@+id/imgBtn_back_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dp16"
+                app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+
+            <TextView
+                android:id="@+id/tvTitle_toolbar"
+                style="@style/fontBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="Title"
+                android:textAllCaps="true"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/dps16"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcv_chat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_chat_layout"
+        android:layout_below="@+id/lauyouttoolbar"
+        android:layout_marginTop="5dp"
+        android:padding="@dimen/dp16"></android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/bottom_chat_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/add_service_bg_editext"
+        android:gravity="center"
+            android:padding="1dp"
+        android:orientation="horizontal"
+        >
+
+        <EditText
+            android:id="@+id/message_txt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorWhite"
+            android:hint="Nhập nội dung ..."
+            android:paddingLeft="25dp"
+            android:textSize="18dp" />
+
+        <!--<ImageView-->
+        <!--android:id="@+id/send_imv"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_weight="0"-->
+        <!--android:padding="10dp"-->
+        <!--app:srcCompat="@drawable/ic_send"-->
+        <!--tools:ignore="VectorDrawableCompat" />-->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/gray" />
+
+        <TextView
+            android:id="@+id/send_imv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:paddingLeft="@dimen/dp20"
+            android:paddingRight="@dimen/dp20"
+            android:text="Gửi"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</com.skynetsoftware.trungson.ui.views.ChatParentLayout>

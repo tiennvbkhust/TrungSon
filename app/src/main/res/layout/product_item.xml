@@ -1,39 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_margin="@dimen/dp8"
     android:id="@+id/card"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp8">
+
+    <CheckBox
+        android:id="@+id/cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_margin="@dimen/dp16"
+        android:button="@drawable/selector_cb_fav"
+        android:checked="true"
+        android:visibility="visible" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <ImageView
             android:id="@+id/img"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:scaleType="centerCrop"
-           />
+            android:scaleType="centerCrop" />
+
         <TextView
             android:id="@+id/name"
+            style="@style/fontBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
-            style="@style/fontBold"
             android:layout_marginLeft="@dimen/dp8"
-            android:layout_marginTop="@dimen/dp8"
             android:layout_marginRight="@dimen/dp8"
+            android:layout_marginTop="@dimen/dp8"
             android:singleLine="true"
-            android:textSize="@dimen/dps16"
-            android:textColor="@color/black"/>
+            android:text="Name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dps16" />
+
         <TextView
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:layout_marginBottom="@dimen/dp8"
             android:layout_marginLeft="@dimen/dp8"
             android:layout_marginRight="@dimen/dp8"
-            android:layout_marginBottom="@dimen/dp8"
-            android:textColor="@color/gray"/>
+            android:text="Name"
+            android:textColor="@color/gray" />
     </LinearLayout>
 </android.support.v7.widget.CardView>

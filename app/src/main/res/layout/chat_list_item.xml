@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/dp8"
+    android:layout_marginRight="@dimen/dp8"
+    android:layout_marginTop="@dimen/dp10"
+    android:background="@drawable/service_manager_bg_item"
+    android:foreground="?selectableItemBackground"
+    android:orientation="vertical"
+    android:padding="@dimen/dp10">
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="10:22"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dps12" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgAvt"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:src="@drawable/avt_default" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/dp10"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvName"
+                style="@style/fontBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10:22"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dps16" />
+
+            <TextView
+                android:id="@+id/tvContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="10:22"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dps12" />
+
+            <ImageView
+                android:id="@+id/imgCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:src="@drawable/ic_check2" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+

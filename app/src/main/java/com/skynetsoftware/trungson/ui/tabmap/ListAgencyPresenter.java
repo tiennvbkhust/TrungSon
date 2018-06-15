@@ -16,6 +16,7 @@ public class ListAgencyPresenter implements ListAgencyContract.Presenter {
 
     @Override
     public void getListAgency(LatLng latLng) {
+        if(view==null) return;
         view.showProgress();
         interactor.getListAgency(latLng);
     }

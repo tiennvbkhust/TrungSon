@@ -3,11 +3,13 @@ package com.skynetsoftware.trungson.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Booking {
 
     @Expose
     @SerializedName("active")
-    private String active;
+    private int active;
     @Expose
     @SerializedName("method_payment")
     private int method_payment;
@@ -33,8 +35,14 @@ public class Booking {
     @SerializedName("note")
     private String note;
     @Expose
+    @SerializedName("img")
+    private String img;
+    @Expose
     @SerializedName("quantity")
     private int quantity;
+    @Expose
+    @SerializedName("product")
+    private List<Product> product;
     @Expose
     @SerializedName("time_booking")
     private String time_booking;
@@ -54,11 +62,27 @@ public class Booking {
     @SerializedName("id")
     private String id;
 
-    public String getActive() {
+    public int getActive() {
         return active;
     }
 
-    public void setActive(String active) {
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public List<Product> getProduct() {
+        return product;
+    }
+
+    public void setProduct(List<Product> product) {
+        this.product = product;
+    }
+
+    public void setActive(int active) {
         this.active = active;
     }
 

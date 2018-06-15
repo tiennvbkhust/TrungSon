@@ -56,6 +56,9 @@ public class Profile implements Parcelable {
     @SerializedName("email")
     private String email;
     @Expose
+    @SerializedName("ggid")
+    private String ggid;
+    @Expose
     @SerializedName("phone")
     private String phone;
     @Expose
@@ -76,6 +79,28 @@ public class Profile implements Parcelable {
     @Expose
     @SerializedName("id")
     private String id;
+
+
+    @Expose
+    @SerializedName("booking")
+    private int booking;
+
+
+    public String getGgid() {
+        return ggid;
+    }
+
+    public void setGgid(String ggid) {
+        this.ggid = ggid;
+    }
+
+    public int getBooking() {
+        return booking;
+    }
+
+    public void setBooking(int booking) {
+        this.booking = booking;
+    }
 
     public List<String> getImg() {
         return img;

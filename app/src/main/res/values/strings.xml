@@ -30,6 +30,15 @@
     <string name="notification_item_txt_detail">Chi tiết</string>
     <string name="title_notifications">Thông báo</string>
     <string name="detail_notification_title">Chi tiết thông báo</string>
+    <string name="password">Mật khẩu</string>
+    <string name="profile_title">Hồ sơ</string>
+    <string name="update_infor_success_txt">Cập nhật thông tin thành công</string>
+    <string name="oldpass">Mật khẩu cũ</string>
+    <string name="newpass">Mật khẩu mới</string>
+    <string name="renewpass">Nhập lại mật khẩu</string>
+    <string name="changpass_title">Đổi mật khẩu</string>
+    <string name="chatlist_title">Danh sách tư vấn</string>
+    <string name="privacy_title">Chính sách và điều khoản</string>
 
     <array name="payment">
         <item >Tiền mặt</item>

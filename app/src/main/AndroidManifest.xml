@@ -109,7 +109,8 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".ui.DetailNotificationActivity.DetailNotificationActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity> <activity
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".ui.notification.NotificationActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
@@ -117,10 +118,50 @@
             android:name=".ui.productOfAgency.ListProductsOfAgencyActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
+            android:name=".ui.detailbooking.DetailBookingActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".ui.cart.CartActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan"
-            ></activity>
+            android:windowSoftInputMode="adjustPan"></activity>
+
+        <activity
+            android:name=".ui.privacy.PrivacyActivity"
+            android:theme="@style/DetailProductTheme"></activity>
+        <activity
+            android:name=".ui.history.HistoryActivity"
+            android:theme="@style/DetailProductTheme"></activity>
+        <activity
+            android:name=".ui.chat.chatting.ChatActivity"
+            android:theme="@style/DetailProductTheme"></activity>
+        <activity
+            android:name=".ui.chat.chatlist.ChatListActivity"
+            android:theme="@style/DetailProductTheme"></activity>
+        <activity
+            android:name=".ui.favourite.FavouriteActivity"
+            android:theme="@style/DetailProductTheme"></activity>
+
+        <activity
+            android:name=".ui.tabprofile.profile.ProfilesActivity"
+            android:theme="@style/DetailProductTheme"></activity>
+
+
+        <activity
+            android:name=".ui.changepassword.ChangePasswordActivity"
+            android:theme="@style/DetailProductTheme"></activity>
+        <activity
+            android:name=".ui.history.DetailActivity"
+            android:theme="@style/DetailProductTheme"></activity>
+        <activity
+            android:name=".ui.news.NewsActivity"
+            android:theme="@style/DetailProductTheme"></activity>
+
+
+        <activity
+            android:name=".ui.updateInfor.UpdateInforActivity"
+            android:theme="@style/DetailProductTheme"></activity>
+
+
 
 
         <!--Photopick and cut-->

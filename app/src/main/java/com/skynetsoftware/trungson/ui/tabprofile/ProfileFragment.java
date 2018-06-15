@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,9 +20,12 @@ import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.models.Profile;
 import com.skynetsoftware.trungson.ui.base.BaseActivity;
 import com.skynetsoftware.trungson.ui.base.BaseFragment;
+import com.skynetsoftware.trungson.ui.cart.CartActivity;
 import com.skynetsoftware.trungson.ui.main.MainActivity;
 import com.skynetsoftware.trungson.ui.splash.SplashActivity;
+import com.skynetsoftware.trungson.ui.tabprofile.profile.ProfilesActivity;
 import com.skynetsoftware.trungson.utils.AppConstant;
+import com.skynetsoftware.trungson.utils.CommomUtils;
 import com.squareup.picasso.Picasso;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -46,7 +50,10 @@ public class ProfileFragment extends BaseFragment {
     @BindView(R.id.tvEmailProfile)
     TextView tvEmailProfile;
     Profile profile;
-
+    @BindView(R.id.layoutAddress)
+    LinearLayout layoutAddress;
+    @BindView(R.id.layoutCart)
+    LinearLayout layoutCard;
     public static ProfileFragment newInstance() {
 
         Bundle args = new Bundle();
@@ -77,6 +84,11 @@ public class ProfileFragment extends BaseFragment {
         tvNameProfile.setText(profile.getName());
         if (profile.getAvatar() != null && !profile.getAvatar().isEmpty()) {
             Picasso.with(getContext()).load(profile.getAvatar()).fit().centerCrop().into(imgAvatarProfile);
+        }
+
+        if(profile.getType() != AppConstant.TYPE_USER){
+            layoutAddress.setVisibility(View.GONE);
+         layoutCard.setVisibility(View.GONE);
         }
     }
 
@@ -153,7 +165,7 @@ public class ProfileFragment extends BaseFragment {
                 return;
             }
             CropImage.activity(Uri.fromFile(fileImage))
-                    .start(getContext(),this);
+                    .start(getContext(), this);
         }
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
@@ -178,20 +190,28 @@ public class ProfileFragment extends BaseFragment {
         super.onDestroyView();
     }
 
-    @OnClick({R.id.imgAvatarProfile, R.id.layoutAddress, R.id.layoutInfor, R.id.layoutCart,  R.id.layoutContact, R.id.layoutLogout})
+    @OnClick({R.id.imgAvatarProfile, R.id.layoutAddress, R.id.layoutInfor, R.id.layoutCart, R.id.layoutContact, R.id.layoutLogout})
     public void onViewClicked(View view) {
+        Intent intentToAddress = new Intent(getActivity(), CartActivity.class);
+
         switch (view.getId()) {
             case R.id.imgAvatarProfile:
-                choosePhoto();
+               // choosePhoto();
                 break;
             case R.id.layoutAddress:
+                intentToAddress.putExtra("tab", 1);
+                startActivity(intentToAddress);
                 break;
             case R.id.layoutInfor:
+                startActivity(new Intent(getActivity(), ProfilesActivity.class));
                 break;
             case R.id.layoutCart:
+                intentToAddress.putExtra("tab", 2);
+                startActivity(intentToAddress);
                 break;
 
             case R.id.layoutContact:
+                CommomUtils.dialPhoneNumber(getActivity(), " 094 1008899");
                 break;
             case R.id.layoutLogout:
                 logout();

@@ -137,7 +137,7 @@ public class PaymentInforFragment extends BaseFragment implements PaymentContrac
     public void onViewClicked() {
         presenter.saveInfoCard(edtDate.getText().toString(), edtNumberCard.getText().toString(),
                 edtName.getText().toString(), edtCVV.getText().toString());
-        presenter.paidCart(spTypePayment.getSelectedItemPosition(), price);
+        presenter.paidCart(spTypePayment.getSelectedItemPosition()+1, price);
     }
 
     @Override

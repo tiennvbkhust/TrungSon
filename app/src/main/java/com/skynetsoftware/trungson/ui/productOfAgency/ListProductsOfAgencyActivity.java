@@ -28,8 +28,10 @@ import com.skynetsoftware.trungson.R;
 import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.models.Category;
 import com.skynetsoftware.trungson.models.Filter;
+import com.skynetsoftware.trungson.models.Shop;
 import com.skynetsoftware.trungson.ui.base.BaseActivity;
 import com.skynetsoftware.trungson.ui.base.BaseFragment;
+import com.skynetsoftware.trungson.ui.chat.chatting.ChatActivity;
 import com.skynetsoftware.trungson.ui.home.BottomTabAdapter;
 import com.skynetsoftware.trungson.ui.home.HomeFragment;
 import com.skynetsoftware.trungson.ui.main.MainActivity;
@@ -322,8 +324,13 @@ public class ListProductsOfAgencyActivity extends BaseActivity implements ListPr
                onBackPressed();
                 break;
             case R.id.btn_msg:
-                Intent i = new Intent(ListProductsOfAgencyActivity.this, WriteReviewShopActivity.class);
-                i.putExtra(AppConstant.MSG,idAgency);
+                Intent i = new Intent(ListProductsOfAgencyActivity.this, ChatActivity.class);
+                Bundle b  = new Bundle();
+                Shop shop = new Shop();
+                shop.setName("");
+                shop.setId(idAgency);
+                b.putParcelable(AppConstant.INTENT,shop);
+                i.putExtra(AppConstant.BUNDLE,b);
                 startActivity(i);
                 break;
             case R.id.btn_rate:

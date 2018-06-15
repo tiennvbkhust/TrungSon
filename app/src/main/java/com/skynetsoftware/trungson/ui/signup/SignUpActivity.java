@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.skynetsoftware.trungson.R;
 import com.skynetsoftware.trungson.ui.base.BaseActivity;
+import com.skynetsoftware.trungson.ui.privacy.PrivacyActivity;
 import com.skynetsoftware.trungson.ui.verifyaccount.VerifyAccountActivity;
 import com.skynetsoftware.trungson.ui.views.ProgressDialogCustom;
 import com.skynetsoftware.trungson.utils.AppConstant;
@@ -67,6 +68,7 @@ public class SignUpActivity extends BaseActivity implements SignUpContract.View{
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tvLinkToPrivacy:
+                startActivity(new Intent(SignUpActivity.this, PrivacyActivity.class));
                 break;
             case R.id.btnSubmit:
                 presenter.signUp(edtName.getText().toString(),edtEmail.getText().toString(),edtPhone.getText().toString());

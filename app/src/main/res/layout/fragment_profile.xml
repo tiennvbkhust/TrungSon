@@ -46,7 +46,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:gravity="bottom"
-    android:layout_marginBottom="@dimen/dp32"
+    android:layout_marginBottom="@dimen/dp50"
     android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/layoutAddress"

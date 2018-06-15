@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp8"
+    android:layout_marginLeft="@dimen/dp16"
+    android:layout_marginRight="@dimen/dp16"
+    android:layout_marginTop="@dimen/dp8"
+    android:foreground="?selectableItemBackground"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="@dimen/dp2">
+
+    <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!-- Bottom View Start-->
+        <LinearLayout
+            android:id="@+id/bottom_wrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#66ddff00"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <!--What you want to show-->
+
+            <FrameLayout
+                android:id="@+id/btnDelete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:background="#eb3148"
+                android:foreground="?selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp16"
+                    android:layout_marginRight="@dimen/dp16"
+                    app:srcCompat="@drawable/ic_delete" />
+            </FrameLayout>
+
+
+        </LinearLayout>
+        <!-- Bottom View End-->
+
+        <!-- Surface View Start -->
+        <LinearLayout
+            android:id="@+id/layoutContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+            <!--What you want to show in SurfaceView-->
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgProduct"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp16">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvNameProduct"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:text="CAO HA THU O LAVA"
+                            android:textColor="#1a1a1c"
+                            android:textSize="@dimen/dps16" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvIdProduct"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+
+                            android:text="Mã sản phẩm:"
+                            android:textColor="#797c87"
+                            android:textSize="@dimen/dps13" />
+
+                        <TextView
+                            android:id="@+id/tvPriceProduct"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:letterSpacing="-0.01"
+                            android:lineSpacingExtra="8sp"
+                            android:singleLine="true"
+                            android:text="60.000vnd"
+                            android:textColor="#1a1a1c"
+
+                            android:textSize="@dimen/dps16" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvStateProduct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="Tình trạng: "
+                        android:textColor="#797c87"
+                        android:textSize="@dimen/dps13" />
+
+                    <TextView
+                        android:id="@+id/tvDescriptionProduct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="Tác dụng:"
+                        android:textColor="#797c87"
+                        android:textSize="@dimen/dps13" />
+
+                    <TextView
+                        android:id="@+id/tvDateProduct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:singleLine="true"
+                        android:text="Chi tiết"
+                        android:textColor="#797c87"
+                        android:textSize="@dimen/dps13" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+        <!-- Surface View End -->
+    </com.daimajia.swipe.SwipeLayout>
+
+</android.support.v7.widget.CardView>

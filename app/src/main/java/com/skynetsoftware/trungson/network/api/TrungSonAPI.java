@@ -3,6 +3,9 @@ package com.skynetsoftware.trungson.network.api;
 
 import com.skynetsoftware.trungson.models.Booking;
 import com.skynetsoftware.trungson.models.Category;
+import com.skynetsoftware.trungson.models.ChatItem;
+import com.skynetsoftware.trungson.models.Message;
+import com.skynetsoftware.trungson.models.News;
 import com.skynetsoftware.trungson.models.Notification;
 import com.skynetsoftware.trungson.models.Product;
 import com.skynetsoftware.trungson.models.Profile;
@@ -64,9 +67,9 @@ public interface TrungSonAPI {
     @FormUrlEncoded
     @POST("booking.php")
     Call<ApiResponse<String>> paidCart(@Field("u_id") String uId, @Field("p_id") String p_id,
-                                        @Field("note") String note, @Field("promotion") String promotionCode, @Field("price") double price,
-                                        @Field("name") String name, @Field("address") String address, @Field("city") String city, @Field("phone") String phone,
-                                        @Field("method_payment") int typePayment);
+                                       @Field("note") String note, @Field("promotion") String promotionCode, @Field("price") double price,
+                                       @Field("name") String name, @Field("address") String address, @Field("city") String city, @Field("phone") String phone,
+                                       @Field("method_payment") int typePayment);
 
     @GET("category.php")
     Call<ApiResponse<List<Category>>> getListCategoy();
@@ -77,8 +80,22 @@ public interface TrungSonAPI {
                                                               @Query("price_min") String priceMin,
                                                               @Query("type_sort") int sort);
 
+    @GET("history.php")
+    Call<ApiResponse<List<Booking>>> getHistories(@Query("id") String id);
+    @GET("news.php")
+    Call<ApiResponse<List<News>>> getNews();
+
+    @GET("list_favourite.php")
+    Call<ApiResponse<List<Product>>> getListFavouritesShop(@Query("id") String id);
+
     @GET("list_product.php")
     Call<ApiResponse<List<Product>>> getListProduct();
+    @FormUrlEncoded
+    @POST("change_password.php")
+    Call<ApiResponse> changePassword(@Field("new_pass") String newpass, @Field("old_pass") String oldpass, @Field("id") String id, @Field("type") int type);
+
+    @GET("history_detail.php")
+    Call<ApiResponse<Booking>> getDetailBooking(@Query("id") String id);
 
     @GET("product_detail.php")
     Call<ApiResponse<Product>> getDetailProduct(@Query("id") String idProduct, @Query("u_id") String idUser);
@@ -90,9 +107,28 @@ public interface TrungSonAPI {
     @POST("forget_password.php")
     Call<ApiResponse> forgotPss(@Field("email") String email, @Field("type") int type);
 
+    @GET("get_user_chat.php")
+    Call<ApiResponse<List<ChatItem>>> getListChatItem(@Query("id") String uid, @Query("type") int type);
+
     @FormUrlEncoded
     @POST("favourite.php")
     Call<ApiResponse> toggleFavourite(@Field("u_id") String id, @Field("p_id") String idProduct, @Field("type") int like);
 
+
+    @Multipart
+    @POST("update_profile.php")
+    Call<ApiResponse> updateInfor(@PartMap() Map<String, okhttp3.RequestBody> partMap);
+
+    @Multipart
+    @POST("update_avatar.php")
+    Call<ApiResponse<String>> uploadAvatar(@Part MultipartBody.Part image, @PartMap() Map<String, okhttp3.RequestBody> partMap);
+
+    @FormUrlEncoded
+    @POST("message.php")
+    Call<ApiResponse<Message>> sendMessageTo(@Field("u_id") String idUser, @Field("sh_id") String idShop, @Field("time") String time, @Field("content") String content, @Field("type") int type);
+
+
+    @GET("get_message.php")
+    Call<ApiResponse<List<Message>>> getListMessageBetween(@Query("u_id") String uid, @Query("sh_id") String shID, @Query("type") int type);
 
 }

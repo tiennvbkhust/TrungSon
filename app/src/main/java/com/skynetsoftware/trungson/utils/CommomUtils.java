@@ -56,6 +56,13 @@ public class CommomUtils {
         vectorDrawable.draw(canvas);
         return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
+    public static void dialPhoneNumber(Activity activity, String phoneNumber) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + phoneNumber));
+        if (intent.resolveActivity(activity.getPackageManager()) != null) {
+            activity.startActivity(intent);
+        }
+    }
     public static void openMapToLocation(Activity activity,String location){
         Uri gmmIntentUri = Uri.parse("google.navigation:q="+location+"&avoid=tf");
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);

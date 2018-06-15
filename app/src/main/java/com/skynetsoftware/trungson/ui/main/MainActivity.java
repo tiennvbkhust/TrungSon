@@ -1,5 +1,6 @@
 package com.skynetsoftware.trungson.ui.main;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,9 +17,14 @@ import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.models.Profile;
 import com.skynetsoftware.trungson.ui.base.BaseActivity;
 import com.skynetsoftware.trungson.ui.cart.CartActivity;
+import com.skynetsoftware.trungson.ui.chat.chatlist.ChatListFragment;
+import com.skynetsoftware.trungson.ui.favourite.FavouriteActivity;
+import com.skynetsoftware.trungson.ui.history.HistoryActivity;
 import com.skynetsoftware.trungson.ui.home.HomeFragment;
+import com.skynetsoftware.trungson.ui.news.NewsActivity;
 import com.skynetsoftware.trungson.ui.notification.NotificationActivity;
 import com.skynetsoftware.trungson.ui.tabproduct.ListProductsFragment;
+import com.skynetsoftware.trungson.ui.tabprofile.ProfileFragment;
 import com.skynetsoftware.trungson.ui.views.ProgressDialogCustom;
 import com.skynetsoftware.trungson.utils.AppConstant;
 import com.skynetsoftware.trungson.utils.PicassoUtils;
@@ -29,7 +35,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainActivity extends BaseActivity implements HomeFragment.CallBackHomeFragment {
+public class MainActivity extends BaseActivity implements HomeFragment.CallBackHomeFragment, MainContract.View {
     ProgressDialogCustom dialogCustom;
     @BindView(R.id.nav_staff)
     LinearLayout navStaff;
@@ -61,6 +67,8 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
     LinearLayout navCSetting;
     @BindView(R.id.tv_nav_s_badget_ondemand)
     TextView tvNavSBadgetOndemand;
+    @BindView(R.id.tv_nav_c_badget_history)
+    TextView tv_nav_c_badget_history;
     @BindView(R.id.nav_s_ondemand)
     LinearLayout navSOndemand;
     @BindView(R.id.nav_s_checkin)
@@ -76,6 +84,7 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
     private Profile profile;
     DrawerLayout drawer;
     LinearLayout currentMenu;
+    private MainContract.Presenter presenter;
 
     @Override
     protected int initLayout() {
@@ -85,8 +94,12 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
     @Override
     protected void initVariables() {
         //    showToast("abc ss", AppConstant.NEGATIVE);
+        presenter = new MainPresenter(this);
         profile = AppController.getInstance().getmProfileUser();
-        if (profile == null) showDialogExpired();
+        if (profile == null) {
+            showDialogExpired();
+            return;
+        }
         if (profile.getType() == AppConstant.TYPE_USER) {
             navStaff.setVisibility(View.GONE);
             getSupportFragmentManager().beginTransaction().add(R.id.root, HomeFragment.newInstance(), "home").commit();
@@ -94,6 +107,8 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
             currentMenu.getChildAt(0).setVisibility(View.VISIBLE);
         } else {
             navCustomer.setVisibility(View.GONE);
+            getSupportFragmentManager().beginTransaction().add(R.id.root, ChatListFragment.newInstance(), "chatlist").commit();
+
         }
 
         bindUIProfile();
@@ -102,6 +117,10 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
     private void bindUIProfile() {
         tvNameProfile.setText(String.format("%s\n%s", profile.getName(), (profile.getType() == AppConstant.TYPE_USER ? profile.getAddress() : "Nhân viên")));
         PicassoUtils.loadImage(this, profile.getAvatar(), imgAvatarProfile);
+        if (profile.getBooking() > 0) {
+            tv_nav_c_badget_history.setText(profile.getBooking() + "");
+            tv_nav_c_badget_history.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -157,24 +176,34 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
                 startActivity(new Intent(MainActivity.this, NotificationActivity.class));
                 break;
             case R.id.nav_c_history:
+                startActivity(new Intent(MainActivity.this, HistoryActivity.class));
+
                 break;
             case R.id.nav_c_news:
+                startActivity(new Intent(MainActivity.this, NewsActivity.class));
+
                 break;
             case R.id.nav_c_favourite:
+                startActivity(new Intent(MainActivity.this, FavouriteActivity.class));
+
                 break;
             case R.id.nav_c_setting:
                 homeFragment.tranToTab(3);
                 break;
             case R.id.nav_s_ondemand:
+                tranToFragment(ChatListFragment.newInstance());
                 break;
             case R.id.nav_s_checkin:
                 break;
             case R.id.nav_s_notification:
+                startActivity(new Intent(MainActivity.this, NotificationActivity.class));
+
                 break;
             case R.id.nav_s_news:
+                startActivity(new Intent(MainActivity.this, NewsActivity.class));
                 break;
             case R.id.nav_s_setting:
-
+                tranToFragment(ProfileFragment.newInstance());
                 break;
         }
         currentMenu = (LinearLayout) view;
@@ -191,6 +220,8 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
 //            if (fragment != null) fragment.onResume();
 //
 //        }
+
+        presenter.getInfor();
     }
 
     public void changeNavUI(int idViewChoose) {
@@ -212,4 +243,47 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
     public void tranToFragment(Fragment listProductsFragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.root, listProductsFragment, listProductsFragment.getTag()).commit();
     }
+
+    @Override
+    public void getInforSuccess() {
+        profile = AppController.getInstance().getmProfileUser();
+        bindUIProfile();
+    }
+
+    @Override
+    public Context getMyContext() {
+        return this;
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroyView();
+        super.onDestroy();
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hiddenProgress() {
+
+    }
+
+    @Override
+    public void onErrorApi(String message) {
+
+    }
+
+    @Override
+    public void onError(String message) {
+
+    }
+
+    @Override
+    public void onErrorAuthorization() {
+        showDialogExpired();
+    }
+
 }

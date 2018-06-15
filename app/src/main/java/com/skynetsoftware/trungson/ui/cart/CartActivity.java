@@ -62,7 +62,6 @@ public class CartActivity extends BaseActivity implements CartContract.View {
         tabs.getTabAt(0).setText("GIỎ HÀNG");
         tabs.getTabAt(1).setText("THÔNG TIN NHẬN HÀNG");
         tabs.getTabAt(2).setText("THANH TOÁN");
-        viewpager.setCurrentItem(0);
         viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -87,6 +86,9 @@ public class CartActivity extends BaseActivity implements CartContract.View {
         });
         countProducts();
 
+        if (getIntent() != null && getIntent().getExtras() != null) {
+            viewpager.setCurrentItem(getIntent().getExtras().getInt("tab"));
+        }
     }
 
     public void saveInfor(String name, String address, String city, String phone, String note, String promotion) {
@@ -128,11 +130,11 @@ public class CartActivity extends BaseActivity implements CartContract.View {
                 onBackPressed();
                 break;
             case R.id.btnNext:
-                if(viewpager.getCurrentItem() == 1){
+                if (viewpager.getCurrentItem() == 1) {
                     AddressInforFragment fragment = (AddressInforFragment) bottomTabAdapter.getFragment(viewpager.getCurrentItem());
-                    if(fragment!=null){
-                        presenter.updateInfor(fragment.edtName.getText().toString(),fragment.edtAddress.getText().toString()
-                                ,fragment.edtCity.getText().toString(),fragment.edtPhone.getText().toString(),fragment.edtNote.getText().toString(),fragment.edtCodePromo.getText().toString());
+                    if (fragment != null) {
+                        presenter.updateInfor(fragment.edtName.getText().toString(), fragment.edtAddress.getText().toString()
+                                , fragment.edtCity.getText().toString(), fragment.edtPhone.getText().toString(), fragment.edtNote.getText().toString(), fragment.edtCodePromo.getText().toString());
                     }
                     return;
                 }
