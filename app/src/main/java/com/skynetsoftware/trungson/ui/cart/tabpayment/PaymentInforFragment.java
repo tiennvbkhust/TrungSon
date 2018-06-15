@@ -20,6 +20,7 @@ import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.models.Product;
 import com.skynetsoftware.trungson.ui.base.BaseFragment;
 import com.skynetsoftware.trungson.ui.cart.CartActivity;
+import com.skynetsoftware.trungson.ui.views.AlertDialogCustom;
 import com.skynetsoftware.trungson.ui.views.ProgressDialogCustom;
 import com.skynetsoftware.trungson.utils.AppConstant;
 
@@ -137,7 +138,7 @@ public class PaymentInforFragment extends BaseFragment implements PaymentContrac
     public void onViewClicked() {
         presenter.saveInfoCard(edtDate.getText().toString(), edtNumberCard.getText().toString(),
                 edtName.getText().toString(), edtCVV.getText().toString());
-        presenter.paidCart(spTypePayment.getSelectedItemPosition()+1, price);
+        presenter.paidCart(spTypePayment.getSelectedItemPosition() + 1, price);
     }
 
     @Override
@@ -150,7 +151,8 @@ public class PaymentInforFragment extends BaseFragment implements PaymentContrac
 
     @Override
     public void onSuccessPaid(String booking) {
-        ((CartActivity) getActivity()).showToast("Đặt hàng thành công", AppConstant.POSITIVE);
+        AlertDialogCustom.showDialogSuccess(getContext(), booking).show();
+       // ((CartActivity) getActivity()).showToast("Đặt hàng thành công", AppConstant.POSITIVE);
         countProducts();
         ((CartActivity) getActivity()).countProducts();
         rcvproduct.getAdapter().notifyDataSetChanged();

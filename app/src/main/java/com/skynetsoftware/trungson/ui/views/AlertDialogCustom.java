@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -42,10 +43,16 @@ public class AlertDialogCustom {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.dialog_success, null, false);
-        TextView tv = (TextView) view.findViewById(R.id.tvMessage);
-        tv.setText(String.format(context.getString(R.string.msg_success_format), shop));
+        Button btnOk = (Button) view.findViewById(R.id.btnOK);
+
         builder.setView(view);
         final AlertDialog alertDialog = builder.create();
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
         alertDialog.getWindow().setBackgroundDrawable(
                 new ColorDrawable(android.graphics.Color.TRANSPARENT));
         alertDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);

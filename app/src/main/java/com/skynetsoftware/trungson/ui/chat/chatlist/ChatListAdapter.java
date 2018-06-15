@@ -43,7 +43,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatLi
     @Override
     public void onBindViewHolder(@NonNull ChatListHolder holder, final int position) {
         holder.tvContent.setText(list.get(position).getLastMessage());
-        holder.tvTime.setText(list.get(position).getTime().split(" ")[0]+" "+list.get(position).getTime().split(" ")[1].substring(0,list.get(position).getTime().split(" ")[1].lastIndexOf(':')));
+        //holder.tvTime.setText(list.get(position).getTime().split(" ")[0]+" "+list.get(position).getTime().split(" ")[1].substring(0,list.get(position).getTime().split(" ")[1].lastIndexOf(':')));
         if (list.get(position).getUse().getAvatar() != null && !list.get(position).getUse().getAvatar().isEmpty()) {
             Picasso.with(context).load(list.get(position).getUse().getAvatar()).into(holder.imgAvt);
         }

@@ -7,6 +7,7 @@ import com.skynetsoftware.trungson.models.Profile;
 import com.skynetsoftware.trungson.models.Shop;
 import com.skynetsoftware.trungson.network.socket.SocketClient;
 import com.skynetsoftware.trungson.network.socket.SocketResponse;
+import com.skynetsoftware.trungson.utils.AppConstant;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,18 +23,18 @@ public class ChattingPresenter implements ChattingContract.Presenter {
     }
 
     @Override
-    public void getMessages(String idShop) {
+    public void getMessages(String id1) {
         view.showProgress();
         Profile profile  = AppController.getInstance().getmProfileUser();
         if(profile==null){
             onErrorAuthorization();
             return;
         }
-        interactor.getMessages(idShop,profile.getId());
+        interactor.getMessages(id1,profile.getId());
     }
 
     @Override
-    public void sendMessage(String idShop, String content, SocketClient socketClient) {
+    public void sendMessage(String id1, String content, SocketClient socketClient) {
         view.showProgress();
         this.socketClient   = socketClient;
         Profile profile  = AppController.getInstance().getmProfileUser();
@@ -41,7 +42,7 @@ public class ChattingPresenter implements ChattingContract.Presenter {
             onErrorAuthorization();
             return;
         }
-        interactor.sendMessage(idShop,profile.getId(),content,new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").format(new Date()));
+        interactor.sendMessage(id1,profile.getType() == AppConstant.TYPE_USER ? profile.getId() : profile.getAg_id(),content,new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").format(new Date()));
     }
 
     @Override

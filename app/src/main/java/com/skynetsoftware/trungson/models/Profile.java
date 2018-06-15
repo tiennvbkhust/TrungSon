@@ -47,6 +47,9 @@ public class Profile implements Parcelable {
     @SerializedName("lat")
     private double lat;
     @Expose
+    @SerializedName("ag_id")
+    private String ag_id;
+    @Expose
     @SerializedName("address")
     private String address;
     @Expose
@@ -85,6 +88,13 @@ public class Profile implements Parcelable {
     @SerializedName("booking")
     private int booking;
 
+    public String getAg_id() {
+        return ag_id;
+    }
+
+    public void setAg_id(String ag_id) {
+        this.ag_id = ag_id;
+    }
 
     public String getGgid() {
         return ggid;

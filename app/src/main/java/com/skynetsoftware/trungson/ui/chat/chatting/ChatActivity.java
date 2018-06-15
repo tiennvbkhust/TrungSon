@@ -17,6 +17,7 @@ import com.blankj.utilcode.util.LogUtils;
 import com.google.gson.Gson;
 import com.skynetsoftware.trungson.R;
 import com.skynetsoftware.trungson.models.Message;
+import com.skynetsoftware.trungson.models.Profile;
 import com.skynetsoftware.trungson.models.Shop;
 import com.skynetsoftware.trungson.network.socket.SocketConstants;
 import com.skynetsoftware.trungson.network.socket.SocketResponse;
@@ -45,7 +46,7 @@ public class ChatActivity extends BaseActivity implements ChattingContract.View 
     ChatParentLayout mChatLL;
     private ChattingContract.Presenter presenter;
     private String idShop;
-    private Shop shop;
+    private Profile shop;
     private AdapterChat mAdapterChat;
     private List<Message> mList = new ArrayList<>();
     private BroadcastReceiver receiver = new BroadcastReceiver() {

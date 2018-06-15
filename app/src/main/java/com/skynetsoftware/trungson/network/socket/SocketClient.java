@@ -74,19 +74,19 @@ public class SocketClient extends Service {
     }
 
     public void sendMessage(SocketResponse data) {
-        String room = "nm_chat";
+        String room = "ts_chat";
         switch (data.typeData) {
             case TYPE_NOTIFY: {
-                room = "nm_notification";       // Client dont use this
+                room = "ts_notification";       // Client dont use this
                 break;
             }
             case TYPE_BOOKING: {
-                room = "nm_booking";
+                room = "ts_booking";
 
                 break;
             }
             case TYPE_MESSAGE: {
-                room = "nm_chat";
+                room = "ts_chat";
                 break;
             }
         }
@@ -163,35 +163,24 @@ public class SocketClient extends Service {
                 SocketClient.this.sendBroadcast(intent);
 
 
-                socket.off("nm_send_notification");
-                socket.on("nm_send_notification", new Emitter.Listener() {
+                socket.off("ts_send_notification");
+                socket.on("ts_send_notification", new Emitter.Listener() {
                     @Override
                     public void call(Object... args) {
-                        LogUtils.e("nm_send_notification ------> " + args[0].toString());
+                        LogUtils.e("ts_send_notification ------> " + args[0].toString());
                         SocketResponse data = new Gson().fromJson(args[0].toString(), SocketResponse.class);
                         Profile profile = new Gson().fromJson(mSetting.getString(AppConstant.KEY_PROFILE), Profile.class);
                         if (profile == null) return;
-                        if ( data.getTypeNotifyFromServer() !=2) {
                             notification = CommomUtils.createNotificationWithMsg(getApplicationContext(), "Thông báo", "Bạn có thông báo mới", args[0].toString());
                             showNotificationInStack(0);
-                        }
-//                        SocketResponse response = new Gson().fromJson(args[0].toString(), SocketResponse.class);
-////                        if (response.getU_id().equals(MainApplication.getInstance().getmUser().getU_id())) {
-//                        notification = CommomUtils.createNotificationWithMsg(getApplicationContext(), response.getTitle(), response.getContent(), AppConstant.NOTI);
-//                        showNotificationInStack();
-//                        Intent intent1 = new Intent();
-//                        intent1.setAction(SocketConstants.SOCKET_CHAT);
-////                            mSetting.put(Constants.FINISH, response.getD_id());
-//                        intent1.putExtra(AppConstant.NOTI_, args[0].toString());
-//                        SocketClient.this.sendBroadcast(intent1);
-//                        }
+//
                     }
                 });
-                socket.off("nm_send_booking");
-                socket.on("nm_send_booking", new Emitter.Listener() {
+                socket.off("ts_send_booking");
+                socket.on("ts_send_booking", new Emitter.Listener() {
                     @Override
                     public void call(Object... args) {
-                        LogUtils.e("nm_send_booking ------> " + args[0].toString());
+                        LogUtils.e("ts_send_booking ------> " + args[0].toString());
                         SocketResponse data = new Gson().fromJson(args[0].toString(), SocketResponse.class);
                         if (data.getTypeData() != TYPE_BOOKING) return;
                         Profile profile = new Gson().fromJson(mSetting.getString(AppConstant.KEY_PROFILE), Profile.class);
@@ -225,16 +214,18 @@ public class SocketClient extends Service {
 
                     }
                 });
-                socket.off("nm_send_chat");
-                socket.on("nm_send_chat", new Emitter.Listener() {
+                socket.off("ts_send_chat");
+                socket.on("ts_send_chat", new Emitter.Listener() {
                     @Override
                     public void call(Object... args) {
-                        LogUtils.e("nm_send_chat -------> " + args[0].toString());
+                        LogUtils.e("ts_send_chat -------> " + args[0].toString());
                         SocketResponse data = new Gson().fromJson(args[0].toString(), SocketResponse.class);
                         if (data.getTypeData() != TYPE_MESSAGE) return;
                         Profile profile = new Gson().fromJson(mSetting.getString(AppConstant.KEY_PROFILE), Profile.class);
                         if (profile == null) return;
-                        if (data.getUser() == null || !data.getUser().getId().equals(profile.getId()))
+                        if (data.getMessage() == null || data.getMessage().getType() == profile.getType())
+                            return;
+                        if (profile.getType() != AppConstant.TYPE_USER && !data.getMessage().getShId().equals(profile.getAg_id()))
                             return;
                         notification = CommomUtils.createNotificationWithMsg(getApplicationContext(), "Tin nhắn", "Bạn có một tin nhắn mới.", args[0].toString());
                         showNotificationInStack(2);
@@ -243,8 +234,8 @@ public class SocketClient extends Service {
                         intent1.setAction(SocketConstants.SOCKET_CHAT);
                         intent1.putExtra(AppConstant.MSG, args[0].toString());
                         SocketClient.this.sendBroadcast(intent1);
-                    //    LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent1);
-                        LogUtils.e("nm_send_chat -------> sent to UI" );
+                        //    LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent1);
+                        LogUtils.e("ts_send_chat -------> sent to UI");
 
 //                        LogUtils.e(response.getU_id1());
 //                        LogUtils.e(AppConstant.ID_CHAT);
@@ -305,11 +296,11 @@ public class SocketClient extends Service {
     }
 
     public void showNotificationInStack(int id) {
-        boolean isOn = AppController.getInstance().getmSetting().getBoolean(AppConstant.NOTI_ON,true);
+        boolean isOn = AppController.getInstance().getmSetting().getBoolean(AppConstant.NOTI_ON, true);
 
-        if (isOn && notification != null ) {
-            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.notify(id, notification);
+        if (isOn && notification != null) {
+            NotificationManager notificatiotsanager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificatiotsanager.notify(id, notification);
             notification = null;
         }
     }

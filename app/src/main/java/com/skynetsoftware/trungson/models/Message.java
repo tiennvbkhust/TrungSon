@@ -23,7 +23,7 @@ public class Message implements Parcelable {
     @SerializedName("time")
     private String time;
     @Expose
-    @SerializedName("sh_id")
+    @SerializedName("staff_id")
     private String shId;
     @Expose
     @SerializedName("u_id")

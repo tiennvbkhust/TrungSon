@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.skynetsoftware.trungson.R;
+import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.interfaces.ICallback;
 import com.skynetsoftware.trungson.models.Message;
 import com.skynetsoftware.trungson.utils.AppConstant;
@@ -41,7 +42,7 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.ViewHolerMessa
 
     @Override
     public ViewHolerMessage onCreateViewHolder(ViewGroup parent, int viewType) {
-        layoutId = viewType == AppConstant.TYPE_USER ? R.layout.row_my_chat : R.layout.row_partner_chat;
+        layoutId = viewType == AppController.getInstance().getmProfileUser().getType() ? R.layout.row_my_chat : R.layout.row_partner_chat;
         return new AdapterChat.ViewHolerMessage(LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false));
     }
 

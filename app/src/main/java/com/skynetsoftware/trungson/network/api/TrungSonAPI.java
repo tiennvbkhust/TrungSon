@@ -125,10 +125,10 @@ public interface TrungSonAPI {
 
     @FormUrlEncoded
     @POST("message.php")
-    Call<ApiResponse<Message>> sendMessageTo(@Field("u_id") String idUser, @Field("sh_id") String idShop, @Field("time") String time, @Field("content") String content, @Field("type") int type);
+    Call<ApiResponse<Message>> sendMessageTo(@Field("u_id") String idUser, @Field("staff_id") String idShop, @Field("time") String time, @Field("content") String content, @Field("type") int type);
 
 
     @GET("get_message.php")
-    Call<ApiResponse<List<Message>>> getListMessageBetween(@Query("u_id") String uid, @Query("sh_id") String shID, @Query("type") int type);
+    Call<ApiResponse<List<Message>>> getListMessageBetween(@Query("u_id") String uid, @Query("staff_id") String shID, @Query("type") int type);
 
 }

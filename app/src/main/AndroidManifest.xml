@@ -135,7 +135,7 @@
             android:name=".ui.chat.chatting.ChatActivity"
             android:theme="@style/DetailProductTheme"></activity>
         <activity
-            android:name=".ui.chat.chatlist.ChatListActivity"
+            android:name=".ui.checkin.SearchMapAdressActivity"
             android:theme="@style/DetailProductTheme"></activity>
         <activity
             android:name=".ui.favourite.FavouriteActivity"

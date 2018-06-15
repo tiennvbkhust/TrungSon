@@ -12,12 +12,18 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.skynetsoftware.trungson.R;
 import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.models.Profile;
+import com.skynetsoftware.trungson.network.socket.SocketClient;
+import com.skynetsoftware.trungson.network.socket.SocketResponse;
 import com.skynetsoftware.trungson.ui.base.BaseActivity;
 import com.skynetsoftware.trungson.ui.cart.CartActivity;
 import com.skynetsoftware.trungson.ui.chat.chatlist.ChatListFragment;
+import com.skynetsoftware.trungson.ui.chat.chatting.ChatActivity;
+import com.skynetsoftware.trungson.ui.checkin.SearchMapAdressActivity;
+import com.skynetsoftware.trungson.ui.detailbooking.DetailBookingActivity;
 import com.skynetsoftware.trungson.ui.favourite.FavouriteActivity;
 import com.skynetsoftware.trungson.ui.history.HistoryActivity;
 import com.skynetsoftware.trungson.ui.home.HomeFragment;
@@ -93,6 +99,35 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
 
     @Override
     protected void initVariables() {
+
+        if (getIntent() != null && getIntent().getExtras() != null) {
+            String dataFromNoti = getIntent().getExtras().getString(AppConstant.NOTIFICATION_SOCKET);
+            if (dataFromNoti != null) {
+                SocketResponse data = new Gson().fromJson(dataFromNoti, SocketResponse.class);
+                if (data != null) {
+                    Intent i;
+                    if (data.getTypeData() == SocketClient.TYPE_BOOKING) {
+                        i = new Intent(MainActivity.this, DetailBookingActivity.class);
+                        i.putExtra(AppConstant.MSG, data.getIdOrder());
+                    } else if (data.getTypeData() == SocketClient.TYPE_MESSAGE) {
+                        i = new Intent(MainActivity.this, ChatActivity.class);
+                        Bundle b = new Bundle();
+                        Profile p = new Profile();
+                        if(AppController.getInstance().getmProfileUser().getType() == AppConstant.TYPE_USER){
+                            p.setId(data.getShop().getId());
+                        }else{
+                            p.setId(data.getUser().getId());
+                        }
+                        b.putParcelable(AppConstant.INTENT,  p);
+                        i.putExtra(AppConstant.BUNDLE, b);
+                    } else {
+                        i = new Intent(MainActivity.this, NotificationActivity.class);
+                    }
+                    startActivity(i);
+                }
+            }
+
+        }
         //    showToast("abc ss", AppConstant.NEGATIVE);
         presenter = new MainPresenter(this);
         profile = AppController.getInstance().getmProfileUser();
@@ -194,6 +229,8 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
                 tranToFragment(ChatListFragment.newInstance());
                 break;
             case R.id.nav_s_checkin:
+                startActivity(new Intent(MainActivity.this, SearchMapAdressActivity.class));
+
                 break;
             case R.id.nav_s_notification:
                 startActivity(new Intent(MainActivity.this, NotificationActivity.class));

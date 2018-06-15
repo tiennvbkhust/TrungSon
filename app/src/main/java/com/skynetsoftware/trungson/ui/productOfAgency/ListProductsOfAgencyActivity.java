@@ -28,6 +28,7 @@ import com.skynetsoftware.trungson.R;
 import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.models.Category;
 import com.skynetsoftware.trungson.models.Filter;
+import com.skynetsoftware.trungson.models.Profile;
 import com.skynetsoftware.trungson.models.Shop;
 import com.skynetsoftware.trungson.ui.base.BaseActivity;
 import com.skynetsoftware.trungson.ui.base.BaseFragment;
@@ -326,7 +327,7 @@ public class ListProductsOfAgencyActivity extends BaseActivity implements ListPr
             case R.id.btn_msg:
                 Intent i = new Intent(ListProductsOfAgencyActivity.this, ChatActivity.class);
                 Bundle b  = new Bundle();
-                Shop shop = new Shop();
+                Profile shop = new Profile();
                 shop.setName("");
                 shop.setId(idAgency);
                 b.putParcelable(AppConstant.INTENT,shop);

@@ -10,7 +10,7 @@
     <string name="disconnect">Mất kết nối</string>
     <string name="reconnect">Đang kết nối</string>
     <string name="facebook_app_id">121212121212</string>
-    <string name="msg_success_format">Thành công  %s</string>
+    <string name="msg_success_format">Bạn đã đặt hàng thành công, đơn hàng của bạn đang được bộ phận kinh doanh ghi lại</string>
     <string name="text_lost_connect">Mất kết nối</string>
     <string name="ok">ok</string>
     <string name="cancel">Hủy</string>

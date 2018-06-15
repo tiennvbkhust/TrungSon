@@ -7,12 +7,13 @@
     android:background="@drawable/background_editext"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="36dp">
+   >
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:layout_marginTop="36dp"
+        app:srcCompat="@drawable/ic_man_in_a_party_dancing_with_people" />
 
     <TextView
         style="@style/fontBold"
@@ -20,19 +21,27 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="4sp"
+        android:text="Chúc mừng bạn"
         android:textColor="@color/dusk"
-        android:textSize="26sp"
-        android:text="Chúc mừng bạn" />
+        android:textSize="@dimen/dps18" />
 
     <TextView
         android:id="@+id/tvMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:lineSpacingExtra="8sp"
-        android:textColor="#4a4a4a"
-        android:textSize="16sp"
         android:layout_marginBottom="@dimen/dp30"
         android:layout_marginTop="@dimen/dp18"
-        android:text="@string/msg_success_format" />
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="8sp"
+        android:text="@string/msg_success_format"
+        android:textColor="#4a4a4a"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnOK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        android:text="@string/ok"
+        android:textColor="@color/white" />
 </LinearLayout>
