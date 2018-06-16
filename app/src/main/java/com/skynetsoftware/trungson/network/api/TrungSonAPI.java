@@ -126,6 +126,9 @@ public interface TrungSonAPI {
     @FormUrlEncoded
     @POST("message.php")
     Call<ApiResponse<Message>> sendMessageTo(@Field("u_id") String idUser, @Field("staff_id") String idShop, @Field("time") String time, @Field("content") String content, @Field("type") int type);
+    @FormUrlEncoded
+    @POST("checkin.php")
+    Call<ApiResponse<Message>> checkIn(@Field("id") String id, @Field("address") String address, @Field("lat") double lat, @Field("lng") double lng, @Field("type") int typeCheckin);
 
 
     @GET("get_message.php")

@@ -2,6 +2,7 @@ package com.skynetsoftware.trungson.ui.views;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.Window;
@@ -23,7 +24,8 @@ public class DialogTwoButtonUtils extends Dialog {
         this.mContext = context;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_two_button);
-        getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog);
+       getWindow().setBackgroundDrawable(
+                new ColorDrawable(android.graphics.Color.TRANSPARENT));
         initView();
     }
 

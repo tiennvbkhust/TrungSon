@@ -57,7 +57,7 @@ public class Product implements Parcelable , Cloneable{
     private String id;
     @Expose
     @SerializedName("is_favourite")
-    private int is_favourite;
+    private int is_favourite =1;
     @Expose
     @SerializedName("number")
     private int numberOfProduct;

@@ -245,6 +245,7 @@
                         <TextView
                             android:id="@+id/tv_nav_s_badget_ondemand"
                             style="@style/nav_text_badget_item"
+
                             android:text="03" />
                     </FrameLayout>
                 </LinearLayout>
@@ -261,7 +262,23 @@
                     <TextView
                         style="@style/nav_textview_item"
                         android:drawableLeft="@drawable/ic_placeholder"
-                        android:text="Check IN" />
+                        android:text="Check In" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/nav_s_checkout"
+
+                    style="@style/nav_layout_root_item">
+
+                    <View
+                        style="@style/nav_view_selection_item"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        style="@style/nav_textview_item"
+                        android:drawableLeft="@drawable/ic_placeholder"
+                        android:text="Check Out" />
 
 
                 </LinearLayout>
@@ -282,7 +299,7 @@
                         style="@style/nav_layout_badget_item"
                         android:layout_gravity="center"
                         android:layout_marginLeft="@dimen/dp16"
-                        android:visibility="visible">
+                        android:visibility="invisible">
 
                         <TextView
                             android:id="@+id/tv_nav_s_badget_noti"

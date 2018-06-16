@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -59,5 +60,27 @@ public class AlertDialogCustom {
         return alertDialog;
     }
 
+    public static AlertDialog showDialogSuccess(Context context, int resourcePhoto, String text) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = layoutInflater.inflate(R.layout.dialog_success, null, false);
+        Button btnOk = (Button) view.findViewById(R.id.btnOK);
+        TextView textView = (TextView) view.findViewById(R.id.tvMessage);
+        ImageView img = (ImageView) view.findViewById(R.id.photo);
+        img.setImageResource(resourcePhoto);
+        textView.setText(text);
+        builder.setView(view);
+        final AlertDialog alertDialog = builder.create();
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        alertDialog.getWindow().setBackgroundDrawable(
+                new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        alertDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        return alertDialog;
+    }
 
 }

@@ -48,9 +48,9 @@ public class SocketClient extends Service {
     CountDownTimer countDownTimer;
     public static final int STATE_NEWORDER = 1;
     public static final int STATE_RECEIVED = 2;
-    public static final int STATE_INPROGRESS = 3;
-    public static final int STATE_FINISHED = 4;
-    public static final int STATE_CANCELED = 5;
+    public static final int STATE_INPROGRESS = 2;
+    public static final int STATE_FINISHED = 3;
+    public static final int STATE_CANCELED = 4;
     public static final int TYPE_NOTIFY = 0;
     public static final int TYPE_BOOKING = 1;
     public static final int TYPE_MESSAGE = 2;
@@ -185,26 +185,22 @@ public class SocketClient extends Service {
                         if (data.getTypeData() != TYPE_BOOKING) return;
                         Profile profile = new Gson().fromJson(mSetting.getString(AppConstant.KEY_PROFILE), Profile.class);
                         if (profile == null || data.getStateOrder() == STATE_NEWORDER ||
-                                !data.getUser().getId().equals(profile.getId())) return;
+                                !data.getIdUser().equals(profile.getId())) return;
                         String msg = "";
                         switch (data.getStateOrder()) {
                             case STATE_NEWORDER: {
                                 break;
                             }
                             case STATE_RECEIVED: {
-                                msg = "Lịch đặt làm Nails của bạn đã được tiếp nhận.";
-                                break;
-                            }
-                            case STATE_INPROGRESS: {
-                                msg = "Lịch đặt làm Nails của bạn đang được thực hiện.";
+                                msg = "Đơn hàng của bạn đã được tiếp nhận.";
                                 break;
                             }
                             case STATE_FINISHED: {
-                                msg = "Lịch đặt làm Nails của bạn đã hoàn thành.";
+                                msg = "Đơn hàng của bạn đã hoàn thành.";
                                 break;
                             }
                             case STATE_CANCELED: {
-                                msg = "Lịch đặt làm Nails của bạn đã bị hủy.";
+                                msg = "Đơn hàng của bạn đã bị hủy.";
                                 break;
                             }
                         }

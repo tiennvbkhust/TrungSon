@@ -43,12 +43,15 @@ public class SearchShopAdapter extends RecyclerView.Adapter<SearchShopAdapter.Sh
         this.iCallback = iCallback;
         this.iToggleCheckbox = toggleCheckbox;
         sparseBooleanArray = new SparseBooleanArray();
+        for (int i = 0; i < this.list.size(); i++) {
+          this.list.get(i).setIs_favourite(1);
+        }
         updateChecked();
     }
 
     public void updateChecked() {
         for (int i = 0; i < this.list.size(); i++) {
-            sparseBooleanArray.append(i, this.list.get(i).getIs_favourite() == 1);
+            sparseBooleanArray.put(i, this.list.get(i).getIs_favourite() == 1);
         }
     }
 
@@ -98,7 +101,9 @@ public class SearchShopAdapter extends RecyclerView.Adapter<SearchShopAdapter.Sh
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 list.get(position).setIs_favourite(isChecked ? 1 : 0);
                 sparseBooleanArray.put(position, isChecked);
+
                 iToggleCheckbox.toggle(position, isChecked);
+
             }
         });
 

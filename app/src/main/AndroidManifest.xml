@@ -140,7 +140,12 @@
         <activity
             android:name=".ui.favourite.FavouriteActivity"
             android:theme="@style/DetailProductTheme"></activity>
-
+        <activity
+            android:name=".ui.checkout.CheckoutActivity"
+            android:theme="@style/DetailProductTheme"></activity>
+        <activity
+            android:name=".ui.allagencies.ListAgencyActivity"
+            android:theme="@style/DetailProductTheme"></activity>
         <activity
             android:name=".ui.tabprofile.profile.ProfilesActivity"
             android:theme="@style/DetailProductTheme"></activity>

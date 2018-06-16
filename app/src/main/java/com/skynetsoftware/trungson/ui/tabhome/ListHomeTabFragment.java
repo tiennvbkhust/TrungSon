@@ -26,6 +26,7 @@ import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.interfaces.ICallback;
 import com.skynetsoftware.trungson.models.Product;
 import com.skynetsoftware.trungson.models.Shop;
+import com.skynetsoftware.trungson.ui.allagencies.ListAgencyActivity;
 import com.skynetsoftware.trungson.ui.base.BaseFragment;
 import com.skynetsoftware.trungson.ui.cart.CartActivity;
 import com.skynetsoftware.trungson.ui.home.BottomTabAdapter;
@@ -154,12 +155,15 @@ public class ListHomeTabFragment extends BaseFragment implements ListProductCont
     }
 
 
-    @OnClick({R.id.imgHome, R.id.imgCart})
+    @OnClick({R.id.imgHome, R.id.imgCart, R.id.showAll})
     public void onViewClicked(View view) {
         callBackHomeFragment.onClick(view);
         switch (view.getId()) {
             case R.id.imgHome:
 
+                break;
+            case R.id.showAll:
+                startActivity(new Intent(getActivity(), ListAgencyActivity.class));
                 break;
             case R.id.imgCart:
                 startActivity(new Intent(getActivity(), CartActivity.class));
@@ -177,7 +181,7 @@ public class ListHomeTabFragment extends BaseFragment implements ListProductCont
             }
             tvNUmberOfCart.setText(total + "");
             tvNUmberOfCart.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             tvNUmberOfCart.setVisibility(View.GONE);
         }
     }

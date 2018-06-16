@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:minWidth="350dp"
+    android:gravity="center_horizontal"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="@dimen/dp16"
+        app:srcCompat="@drawable/ic_map_location" />
 
     <TextView
         android:id="@+id/title_dialog_one_button"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp50"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_title_dialog"
-        android:gravity="center"
+        android:gravity="center"        android:layout_marginBottom="@dimen/dp16"
+        android:paddingRight="@dimen/dp16"
+        android:paddingStart="@dimen/dp16"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/dps18" />
 
@@ -19,22 +32,21 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="@dimen/dp15"
+        android:singleLine="true"
         android:paddingLeft="@dimen/dp20"
         android:paddingRight="@dimen/dp20"
+        android:layout_marginBottom="@dimen/dp16"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/dps15" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/colorBlack" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <TextView
+        <Button
             android:id="@+id/btn_dialog_show_cancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -42,16 +54,14 @@
             android:gravity="center"
             android:paddingBottom="@dimen/dp10"
             android:paddingTop="@dimen/dp10"
+            android:background="@color/gray"
             android:text="@string/cancel"
-            android:textColor="@color/colorE"
+            android:textColor="@color/white"
             android:textSize="@dimen/dps18" />
 
-        <View
-            android:layout_width="0.5dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorD" />
 
-        <TextView
+
+        <Button
             android:id="@+id/btn_dialog_show_ok"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -60,7 +70,8 @@
             android:paddingBottom="@dimen/dp10"
             android:paddingTop="@dimen/dp10"
             android:text="@string/ok"
-            android:textColor="@color/colorE"
+            android:background="@color/red_organce"
+            android:textColor="@color/white"
             android:textSize="@dimen/dps18" />
     </LinearLayout>
 </LinearLayout>

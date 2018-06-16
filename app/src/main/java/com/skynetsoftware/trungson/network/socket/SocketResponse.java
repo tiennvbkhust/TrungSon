@@ -16,6 +16,8 @@ import com.skynetsoftware.trungson.models.Shop;
 public class SocketResponse implements Parcelable {
     @SerializedName("idOrder")
     String idOrder;
+    @SerializedName("idUser")
+    String idUser;
     @SerializedName("stateOrder")
     int stateOrder;
     @SerializedName("shop")
@@ -35,6 +37,14 @@ public class SocketResponse implements Parcelable {
     Message message;
     public int getTypeData() {
         return typeData;
+    }
+
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 
     public String getIdReceiverFromServer() {
@@ -117,6 +127,7 @@ public class SocketResponse implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.idOrder);
+        dest.writeString(this.idUser);
         dest.writeInt(this.stateOrder);
         dest.writeParcelable(this.shop, flags);
         dest.writeParcelable(this.user, flags);
@@ -129,6 +140,7 @@ public class SocketResponse implements Parcelable {
 
     protected SocketResponse(Parcel in) {
         this.idOrder = in.readString();
+        this.idUser = in.readString();
         this.stateOrder = in.readInt();
         this.shop = in.readParcelable(Shop.class.getClassLoader());
         this.user = in.readParcelable(Profile.class.getClassLoader());

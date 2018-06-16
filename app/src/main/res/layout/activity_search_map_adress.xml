@@ -5,13 +5,35 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <include layout="@layout/layout_toolbar" />
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/home_size_photo"
-        tools:context=".ui.search.SearchMapAdressActivity" />
+        android:layout_above="@+id/lay">
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            tools:context=".ui.search.SearchMapAdressActivity" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="46dp"
+                android:layout_marginBottom="@dimen/dp20"
+                app:srcCompat="@drawable/ic_marker" />
+        </FrameLayout>
+
+    </RelativeLayout>
 
 
     <TextView

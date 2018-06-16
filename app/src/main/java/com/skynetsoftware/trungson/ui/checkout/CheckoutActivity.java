@@ -1,4 +1,4 @@
-package com.skynetsoftware.trungson.ui.checkin;
+package com.skynetsoftware.trungson.ui.checkout;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -12,17 +12,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -33,11 +28,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.skynetsoftware.trungson.R;
 import com.skynetsoftware.trungson.models.Place;
 import com.skynetsoftware.trungson.ui.base.BaseActivity;
+import com.skynetsoftware.trungson.ui.checkin.CheckinContract;
+import com.skynetsoftware.trungson.ui.checkin.CheckinPresenter;
 import com.skynetsoftware.trungson.ui.views.AlertDialogCustom;
 import com.skynetsoftware.trungson.ui.views.DialogTwoButtonUtils;
 import com.skynetsoftware.trungson.ui.views.ProgressDialogCustom;
 import com.skynetsoftware.trungson.utils.AppConstant;
-
 
 import java.io.IOException;
 import java.util.List;
@@ -47,7 +43,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SearchMapAdressActivity extends BaseActivity implements OnMapReadyCallback , CheckinContract.View {
+public class CheckoutActivity extends BaseActivity implements OnMapReadyCallback , CheckinContract.View {
 
     private static final int PLACE_PICKER_REQUEST = 10;
     @BindView(R.id.loading)
@@ -70,7 +66,7 @@ public class SearchMapAdressActivity extends BaseActivity implements OnMapReadyC
 
     @Override
     protected void initVariables() {
-        tvToolbar.setText("Check in");
+        tvToolbar.setText("Check out");
         dialogLoading = new ProgressDialogCustom(this);
         presenter = new CheckinPresenter(this);
     }
@@ -145,7 +141,7 @@ public class SearchMapAdressActivity extends BaseActivity implements OnMapReadyC
                 loading.setVisibility(View.VISIBLE);
                 Geocoder geocoder;
                 List<Address> addresses;
-                geocoder = new Geocoder(SearchMapAdressActivity.this, Locale.getDefault());
+                geocoder = new Geocoder(CheckoutActivity.this, Locale.getDefault());
                 try {
                     addresses = geocoder.getFromLocation(mMap.getCameraPosition().target.latitude, mMap.getCameraPosition().target.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
                     if (addresses.size() == 0) {
@@ -188,7 +184,7 @@ public class SearchMapAdressActivity extends BaseActivity implements OnMapReadyC
                 i.putExtra(AppConstant.BUNDLE, b);
                 setResult(RESULT_OK, i);
                 final DialogTwoButtonUtils dialogTwoButtonUtils =  new DialogTwoButtonUtils(this);
-                dialogTwoButtonUtils.setText("Bạn có chắc chắn muốn checkin tại đây",place.getAddress());
+                dialogTwoButtonUtils.setText("Bạn có chắc chắn muốn checkout tại đây",place.getAddress());
                 dialogTwoButtonUtils.setDialogTwoButtonOnClick(new DialogTwoButtonUtils.DialogTwoButtonOnClick() {
                     @Override
                     public void cancel() {
@@ -198,7 +194,8 @@ public class SearchMapAdressActivity extends BaseActivity implements OnMapReadyC
                     @Override
                     public void okClick() {
                         dialogTwoButtonUtils.dismiss();
-                        presenter.checkinHere(place);
+                        presenter.checkOutHere(place);
+
                     }
                 });
                 dialogTwoButtonUtils.show();
@@ -245,11 +242,12 @@ public class SearchMapAdressActivity extends BaseActivity implements OnMapReadyC
 
     @Override
     public void onSuccessCheckin() {
-        AlertDialogCustom.showDialogSuccess(this,R.drawable.ic_winner,"Hệ thống đã ghi nhận việc checkin ngày công của bạn").show();
     }
 
     @Override
     public void onSuccessCheckOut() {
+        AlertDialogCustom.showDialogSuccess(this,
+                R.drawable.ic_winner,"Hệ thống đã ghi nhận việc checkout ngày công của bạn").show();
 
     }
 

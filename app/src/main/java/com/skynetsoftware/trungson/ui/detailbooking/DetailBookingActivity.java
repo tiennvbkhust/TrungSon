@@ -7,11 +7,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.KeyboardUtils;
 import com.skynetsoftware.trungson.R;
 import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.models.Booking;
@@ -32,9 +34,9 @@ public class DetailBookingActivity extends BaseActivity implements DetailBooking
     @BindView(R.id.spTypePayment)
     TextView spTypePayment;
     @BindView(R.id.edtNumberCard)
-    EditText edtNumberCard;
+    TextView edtNumberCard;
     @BindView(R.id.edtName)
-    EditText edtName;
+    TextView edtName;
     @BindView(R.id.layoutCard)
     LinearLayout layoutCard;
     @BindView(R.id.tvNumberProduct)
@@ -71,6 +73,15 @@ public class DetailBookingActivity extends BaseActivity implements DetailBooking
         if (getIntent() != null && getIntent().getExtras() != null) {
             presenter.getDetailBooking(getIntent().getExtras().getString(AppConstant.MSG));
         }
+
+        InputMethodManager imm = ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE));
+        boolean isKeyboardUp = imm.isAcceptingText();
+
+        if (isKeyboardUp)
+        {
+            imm.hideSoftInputFromWindow(edtName.getWindowToken(), 0);
+        }
+        findViewById(R.id.layoutRoot).requestFocus();
     }
 
     @Override

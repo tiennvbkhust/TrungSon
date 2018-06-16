@@ -23,6 +23,7 @@ import com.skynetsoftware.trungson.ui.cart.CartActivity;
 import com.skynetsoftware.trungson.ui.chat.chatlist.ChatListFragment;
 import com.skynetsoftware.trungson.ui.chat.chatting.ChatActivity;
 import com.skynetsoftware.trungson.ui.checkin.SearchMapAdressActivity;
+import com.skynetsoftware.trungson.ui.checkout.CheckoutActivity;
 import com.skynetsoftware.trungson.ui.detailbooking.DetailBookingActivity;
 import com.skynetsoftware.trungson.ui.favourite.FavouriteActivity;
 import com.skynetsoftware.trungson.ui.history.HistoryActivity;
@@ -186,7 +187,7 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
     }
 
 
-    @OnClick({R.id.nav_c_home, R.id.nav_c_shop, R.id.nav_c_nearby, R.id.nav_c_cart, R.id.nav_c_notification, R.id.nav_c_history, R.id.nav_c_news, R.id.nav_c_favourite, R.id.nav_c_setting, R.id.nav_s_ondemand, R.id.nav_s_checkin, R.id.nav_s_notification, R.id.nav_s_news, R.id.nav_s_setting})
+    @OnClick({R.id.nav_c_home, R.id.nav_c_shop, R.id.nav_s_checkout, R.id.nav_c_nearby, R.id.nav_c_cart, R.id.nav_c_notification, R.id.nav_c_history, R.id.nav_c_news, R.id.nav_c_favourite, R.id.nav_c_setting, R.id.nav_s_ondemand, R.id.nav_s_checkin, R.id.nav_s_notification, R.id.nav_s_news, R.id.nav_s_setting})
     public void onViewClicked(View view) {
         if (currentMenu != null) currentMenu.getChildAt(0).setVisibility(View.INVISIBLE);
         HomeFragment homeFragment = (HomeFragment) getSupportFragmentManager().findFragmentByTag("home");
@@ -230,6 +231,10 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
                 break;
             case R.id.nav_s_checkin:
                 startActivity(new Intent(MainActivity.this, SearchMapAdressActivity.class));
+
+                break;
+                case R.id.nav_s_checkout:
+                startActivity(new Intent(MainActivity.this, CheckoutActivity.class));
 
                 break;
             case R.id.nav_s_notification:
