@@ -170,7 +170,7 @@ public class SocketClient extends Service {
                         LogUtils.e("ts_send_notification ------> " + args[0].toString());
                         SocketResponse data = new Gson().fromJson(args[0].toString(), SocketResponse.class);
                         Profile profile = new Gson().fromJson(mSetting.getString(AppConstant.KEY_PROFILE), Profile.class);
-                        if (profile == null) return;
+                        if (profile == null ||(data.getTypeNotifyFromServer() !=3 &&  profile.getType()!=data.getTypeNotifyFromServer()) ) return;
                             notification = CommomUtils.createNotificationWithMsg(getApplicationContext(), "Thông báo", "Bạn có thông báo mới", args[0].toString());
                             showNotificationInStack(0);
 //

@@ -51,6 +51,7 @@ public class HistoryPresenter implements HistoryContract.Presenter {
     public void onSucessGetListHistories(List<Booking> list) {
         if (view == null) return;
         view.hiddenProgress();
+        if(list != null)
         view.onSucessGetListHistories(list);
     }
 }

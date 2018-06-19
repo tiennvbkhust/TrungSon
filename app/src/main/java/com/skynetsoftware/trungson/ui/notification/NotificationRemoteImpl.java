@@ -1,5 +1,6 @@
 package com.skynetsoftware.trungson.ui.notification;
 
+import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.models.Notification;
 import com.skynetsoftware.trungson.network.api.ApiResponse;
 import com.skynetsoftware.trungson.network.api.ApiUtil;
@@ -29,7 +30,7 @@ public class NotificationRemoteImpl extends Interactor implements NotificationCo
 
     @Override
     public void doGetAllService(String idShop) {
-        getmService().getListNotification(idShop, AppConstant.TYPE_USER).enqueue(new CallBackBase<ApiResponse<List<Notification>>>() {
+        getmService().getListNotification(idShop, AppController.getInstance().getmProfileUser().getType()).enqueue(new CallBackBase<ApiResponse<List<Notification>>>() {
             @Override
             public void onRequestSuccess(Call<ApiResponse<List<Notification>>> call, Response<ApiResponse<List<Notification>>> response) {
                 if (response.isSuccessful() && response.body() != null) {
