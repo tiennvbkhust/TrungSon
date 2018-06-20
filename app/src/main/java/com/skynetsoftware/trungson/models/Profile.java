@@ -29,6 +29,9 @@ public class Profile implements Parcelable {
     @SerializedName("type")
     private int type;
     @Expose
+    @SerializedName("state")
+    private int state;
+    @Expose
     @SerializedName("message")
     private int hasNewMessage;
     @Expose
@@ -106,6 +109,14 @@ public class Profile implements Parcelable {
 
     public int getBooking() {
         return booking;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 
     public void setBooking(int booking) {
@@ -304,15 +315,18 @@ public class Profile implements Parcelable {
         dest.writeInt(this.statusAccount);
         dest.writeInt(this.typeAccount);
         dest.writeInt(this.type);
+        dest.writeInt(this.state);
         dest.writeInt(this.hasNewMessage);
         dest.writeString(this.registerDate);
         dest.writeString(this.password);
         dest.writeString(this.introduce);
         dest.writeDouble(this.lng);
         dest.writeDouble(this.lat);
+        dest.writeString(this.ag_id);
         dest.writeString(this.address);
         dest.writeString(this.fbid);
         dest.writeString(this.email);
+        dest.writeString(this.ggid);
         dest.writeString(this.phone);
         dest.writeString(this.name);
         dest.writeString(this.img3);
@@ -320,6 +334,7 @@ public class Profile implements Parcelable {
         dest.writeString(this.img1);
         dest.writeString(this.avatar);
         dest.writeString(this.id);
+        dest.writeInt(this.booking);
     }
 
     protected Profile(Parcel in) {
@@ -329,15 +344,18 @@ public class Profile implements Parcelable {
         this.statusAccount = in.readInt();
         this.typeAccount = in.readInt();
         this.type = in.readInt();
+        this.state = in.readInt();
         this.hasNewMessage = in.readInt();
         this.registerDate = in.readString();
         this.password = in.readString();
         this.introduce = in.readString();
         this.lng = in.readDouble();
         this.lat = in.readDouble();
+        this.ag_id = in.readString();
         this.address = in.readString();
         this.fbid = in.readString();
         this.email = in.readString();
+        this.ggid = in.readString();
         this.phone = in.readString();
         this.name = in.readString();
         this.img3 = in.readString();
@@ -345,6 +363,7 @@ public class Profile implements Parcelable {
         this.img1 = in.readString();
         this.avatar = in.readString();
         this.id = in.readString();
+        this.booking = in.readInt();
     }
 
     public static final Creator<Profile> CREATOR = new Creator<Profile>() {

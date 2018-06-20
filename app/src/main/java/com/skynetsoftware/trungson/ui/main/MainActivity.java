@@ -80,6 +80,8 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
     LinearLayout navSOndemand;
     @BindView(R.id.nav_s_checkin)
     LinearLayout navSCheckin;
+    @BindView(R.id.nav_s_checkout)
+    LinearLayout navSCheckout;
     @BindView(R.id.tv_nav_s_badget_noti)
     TextView tvNavSBadgetNoti;
     @BindView(R.id.nav_s_notification)
@@ -156,6 +158,17 @@ public class MainActivity extends BaseActivity implements HomeFragment.CallBackH
         if (profile.getBooking() > 0) {
             tv_nav_c_badget_history.setText(profile.getBooking() + "");
             tv_nav_c_badget_history.setVisibility(View.VISIBLE);
+        }
+
+        if(profile.getState() == 0 ){
+            navSCheckin.setVisibility(View.GONE);
+            navSCheckout.setVisibility(View.GONE);
+        }else if(profile.getState() == 1){
+            navSCheckin.setVisibility(View.VISIBLE);
+            navSCheckout.setVisibility(View.GONE);
+        }else{
+            navSCheckout.setVisibility(View.VISIBLE);
+            navSCheckin.setVisibility(View.GONE);
         }
     }
 

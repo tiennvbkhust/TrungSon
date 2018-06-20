@@ -31,6 +31,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.skynetsoftware.trungson.R;
+import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.models.Place;
 import com.skynetsoftware.trungson.ui.base.BaseActivity;
 import com.skynetsoftware.trungson.ui.views.AlertDialogCustom;
@@ -246,6 +247,8 @@ public class SearchMapAdressActivity extends BaseActivity implements OnMapReadyC
     @Override
     public void onSuccessCheckin() {
         AlertDialogCustom.showDialogSuccess(this,R.drawable.ic_winner,"Hệ thống đã ghi nhận việc checkin ngày công của bạn").show();
+        AppController.getInstance().getmProfileUser().setState(2);
+
     }
 
     @Override

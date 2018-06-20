@@ -26,6 +26,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.skynetsoftware.trungson.R;
+import com.skynetsoftware.trungson.application.AppController;
 import com.skynetsoftware.trungson.models.Place;
 import com.skynetsoftware.trungson.ui.base.BaseActivity;
 import com.skynetsoftware.trungson.ui.checkin.CheckinContract;
@@ -248,6 +249,8 @@ public class CheckoutActivity extends BaseActivity implements OnMapReadyCallback
     public void onSuccessCheckOut() {
         AlertDialogCustom.showDialogSuccess(this,
                 R.drawable.ic_winner,"Hệ thống đã ghi nhận việc checkout ngày công của bạn").show();
+        AppController.getInstance().getmProfileUser().setState(0);
+
 
     }
 
