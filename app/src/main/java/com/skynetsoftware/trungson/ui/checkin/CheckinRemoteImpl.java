@@ -39,11 +39,11 @@ public class CheckinRemoteImpl extends Interactor implements CheckinContract.Int
                     if (response.body().getCode() == AppConstant.CODE_API_SUCCESS) {
                         listener.onSuccessCheckin(typeChecinout);
                     } else {
-                        listener.onErrorAuthorization();
+                        listener.onError(response.body().getMessage());
 
                     }
                 } else {
-                    listener.onErrorAuthorization();
+                    listener.onError(response.message());
                 }
             }
 
