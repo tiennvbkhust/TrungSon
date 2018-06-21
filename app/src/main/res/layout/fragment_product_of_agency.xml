@@ -159,6 +159,7 @@
             android:tint="@color/orage"
             app:backgroundTint="@color/white"
             app:fabSize="normal"
+            app:elevation="@dimen/dp5"
             app:rippleColor="@color/colorView"
             app:srcCompat="@drawable/ic_star_half_black_24dp" />
 
@@ -173,6 +174,7 @@
             android:tint="@color/gray"
             app:backgroundTint="@color/white"
             app:fabSize="normal"
+            app:elevation="@dimen/dp5"
             app:rippleColor="@color/colorView"
             app:srcCompat="@drawable/ic_message_black_24dp" />
     </LinearLayout>

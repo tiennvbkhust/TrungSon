@@ -49,9 +49,9 @@ public class VerifyAccountActivity extends BaseActivity implements VerifyAccount
     @Override
     protected void initVariables() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            tvTitle.setText(Html.fromHtml(String.format(getString(R.string.verify_title), "0962672440"), Html.FROM_HTML_MODE_LEGACY));
+            tvTitle.setText(Html.fromHtml(getString(R.string.verify_title), Html.FROM_HTML_MODE_LEGACY));
         } else {
-            tvTitle.setText(Html.fromHtml(String.format(getString(R.string.verify_title), "0962672440")));
+            tvTitle.setText(Html.fromHtml(getString(R.string.verify_title)));
         }
 
         dialogLoading = new ProgressDialogCustom(this);

@@ -157,8 +157,8 @@ public class DetailProductActivity extends BaseActivity implements DetailProduct
                     cartImg.setImageResource(R.drawable.ic_cart);
                 } else {
                     //Expanded
-                    cartImg.setImageResource(R.drawable.ic_cart_white);
-                    imgHome.setImageResource(R.drawable.md_nav_back);
+                    cartImg.setImageResource(R.drawable.ic_cart);
+                    imgHome.setImageResource(R.drawable.ic_arrow_back_black_24dp);
                 }
             }
         });
@@ -235,7 +235,7 @@ public class DetailProductActivity extends BaseActivity implements DetailProduct
         }
         name.setText(product.getName());
 
-        tilteDescription.setText(product.getFeature());
+//        tilteDescription.setText(product.getFeature());
         price.setText(String.format("%,.0f vnđ", product.getPrice()));
         numberOfProducts.setText(1 + "");
         if (product.getStatus() == 0) {
